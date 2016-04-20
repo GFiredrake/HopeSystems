@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Favored Brand Selector";
+}
+
+<h2>Featured Brand Selector</h2>
+
+
+@using (Html.BeginForm("SaveFeaturedBrands", "CMS"))
+{
+@Html.DropDownList("FavoredBrand1")<span> is Favored Brand 1</span><br/>
+
+@Html.DropDownList("FavoredBrand2")<span> is Favored Brand 2</span><br/>
+
+@Html.DropDownList("FavoredBrand3")<span> is Favored Brand 3</span><br/>
+
+@Html.DropDownList("FavoredBrand4")<span> is Favored Brand 4</span><br/>
+
+@Html.DropDownList("FavoredBrand5")<span> is Favored Brand 5</span><br/>
+
+@Html.DropDownList("FavoredBrand6")<span> is Favored Brand 6</span><br/>
+
+@Html.DropDownList("FavoredBrand7")<span> is Favored Brand 7</span><br/>
+
+@Html.DropDownList("FavoredBrand8")<span> is Favored Brand 8</span><br/>
+
+@Html.DropDownList("FavoredBrand9")<span> is Favored Brand 9</span><br/>
+
+@Html.DropDownList("FavoredBrand0")<span> is Favored Brand 10</span><br/>
+    
+<div class="HiddenDiv">@Html.DropDownList("ActiveLanguage")</div>
+    
+<input class="button" id="submit LogInButton" type="submit" value="Save Brands" />@Html.Raw(ViewBag.HtmlStr)
+}

@@ -1,0 +1,28 @@
+﻿#DayAmmount, #CurrencyType {
+    width: 48.5%;
+    height: 27px;
+    font-size: 18px;
+}
+
+#TableArea {
+    width: 61%!important;
+}
+
+
+#DisplayTable1 td:nth-child(9), #DisplayTable1 td:nth-child(10), #DisplayTable1 td:nth-child(11), #DisplayTable1 td:nth-child(12), #DisplayTable1 td:nth-child(13),
+#DisplayTable2 td:nth-child(1), #DisplayTable2 td:nth-child(3)  {  
+    text-align: center;
+}
+
+#DisplayTable1 td:nth-child(1), #DisplayTable1 td:nth-child() {
+    text-align: left;
+}
+
+#DisplayTable1 td:nth-child(2), #DisplayTable1 td:nth-child(3), #DisplayTable1 td:nth-child(4), #DisplayTable1 td:nth-child(5), #DisplayTable1 td:nth-child(6),
+#DisplayTable1 td:nth-child(7), #DisplayTable1 td:nth-child(8), #DisplayTable2 td:nth-child(4) {
+    text-align: right
+}
+
+
+
+

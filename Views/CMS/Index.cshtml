@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "CMS";
+}
+
+<h2>CMS</h2>
+
+@using (Html.BeginForm("FavoredBrandSelector", "CMS"))
+{
+    @Html.DropDownList("ActiveLanguage")
+    <input class="button" id="submit LogInButton" type="submit" value="Featured Brands" />
+}
+
+
+<input class="button" id="submit LogInButton" value="Edit Metadata" onclick="location.href='@Url.Action("MetaDataInput", "CMS")'" />

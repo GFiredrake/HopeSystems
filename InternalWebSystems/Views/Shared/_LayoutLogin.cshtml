@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="container">
+        <div id="header"></div>
+        <div id="body">
+            <div id="MainDivLogin">
+                @RenderBody()
+            </div>
+            @Scripts.Render("~/bundles/jquery")
+            @RenderSection("scripts", required: false)
+        </div>
+        <div id="footer">
+            Powered by hope:tools  
+        </div>
+    </div>
+</body>
+</html>

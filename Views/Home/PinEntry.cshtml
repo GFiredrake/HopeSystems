@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@Html.Raw(ViewBag.HtmlStr)
+
+<div id="LogInDiv">
+    @using (Html.BeginForm("AttemptVerification", "LogOn"))
+    {
+        <div class="HiddenDiv">
+            @Html.Raw(ViewBag.HiddenHtml)
+        </div>
+        <div class="LogInControllDiv">
+        <span class="tagSpan">Pin:</span>
+            <input type="number" name="pin" id="PinBox" class="LogInBox" maxlength="4">
+    </div>
+
+    <input class="button" id="submit LogInButton" type="submit" value="Verify" />
+    }
+</div>
+
+

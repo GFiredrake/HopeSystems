@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Welcome to hope.tools @ViewBag.FirstName  @ViewBag.Surname</h1>
+@{
+
+    if (@ViewBag.PermisionLevel >= 95)
+    {
+        <br/>
+        <br/>
+
+    @Html.ActionLink("Sales Overview", "SalesOverviewReport", "Reporting", new { quickreport = "yes", Days = "1" }, new { @class = "generateButton"})
+    }
+}

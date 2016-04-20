@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Freedom Forecast";
+
+}
+
+<h1 class="centeredText">Freedom Forecast Report</h1>
+
+<div><h3>Number Of Current Customers: @ViewBag.NumberOfCustomers</h3></div>
+<div><h3>Number Of Current Freedom Customers: @ViewBag.NumberOfFreedomCustomers</h3></div>
+<div><h3>Freedom Members Percentage: @ViewBag.FreedomMembersPercentage%</h3></div>
+<table>
+    <tr>
+        <td></td>
+        <td class="centerTd">@ViewBag.MonthPlus1</td>
+        <td class="centerTd">@ViewBag.MonthPlus2</td>
+        <td class="centerTd">@ViewBag.MonthPlus3</td>
+        <td class="centerTd">@ViewBag.MonthPlus4</td>
+        <td class="centerTd">@ViewBag.MonthPlus5</td>
+        <td class="centerTd">@ViewBag.MonthPlus6</td>
+        <td class="centerTd">@ViewBag.MonthPlus7</td>
+        <td class="centerTd">@ViewBag.MonthPlus8</td>
+        <td class="centerTd">@ViewBag.MonthPlus9</td>
+        <td class="centerTd">@ViewBag.MonthPlus10</td>
+        <td class="centerTd">@ViewBag.MonthPlus11</td>
+        <td class="centerTd">@ViewBag.MonthPlus12</td>
+    </tr>
+    <tr>
+        <td>Predicted Customers</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers1</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers2</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers3</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers4</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers5</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers6</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers7</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers8</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers9</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers10</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers11</td>
+        <td class="centerTd">@ViewBag.PredictedCustomers12</td>
+    </tr>
+    <tr>
+        <td>Predicted Freedom Customers</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers1</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers2</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers3</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers4</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers5</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers6</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers7</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers8</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers9</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers10</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers11</td>
+        <td class="centerTd">@ViewBag.PredictedFreedomCustomers12</td>
+    </tr>
+    <tr>
+        <td>Predicted Freedom Revenue</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue1</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue2</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue3</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue4</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue5</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue6</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue7</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue8</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue9</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue10</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue11</td>
+        <td class="rightTd">£@ViewBag.PredictedFreedomRevenue12</td>
+    </tr>
+    <tr>
+        <td>Predicted New Freedom Customers</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer1</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer2</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer3</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer4</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer5</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer6</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer7</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer8</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer9</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer10</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer11</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomer12</td>
+    </tr>
+    <tr>
+        <td>Predicted New Freedom Customers Per Day</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay1</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay2</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay3</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay4</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay5</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay6</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay7</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay8</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay9</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay10</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay11</td>
+        <td class="centerTd">@ViewBag.PredictedNewFreedomCustomerPerDay12</td>
+    </tr>
+</table>

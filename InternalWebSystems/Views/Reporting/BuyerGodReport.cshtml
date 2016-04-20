@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (@ViewContext.ViewData.ModelState.IsValid)
+    {
+        ViewBag.Title = "hope:tools - Buyer Stock Report";
+    }
+}
+<h1 class="centeredText">Buyer Stock Report</h1>
+<div class="CenteredDiv">
+
+        @Html.RadioButton("Answer", "A", new { @class = "ButtonA" }) <span>SKU Number</span> 
+        @Html.RadioButton("Answer", "B", new { @class = "ButtonB" }) <span>Supplier Name</span>
+        <div id="SelectionDiv">
+            <div class="InvisibleDiv" id="SkuDiv">
+                <input type="number" name="skuInput" id="SkuInput" max="999999">
+            </div>
+            <div class="HiddenDiv" id="SupplierDiv">
+                @Html.DropDownList("SuppliersAvailable")
+            </div>
+        </div>
+        <div id="DateDiv">
+            <input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+            <input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+        </div>
+        <button class="generateButton" id="GenerateButton" onclick="GenerateBuyerGodReport()">Generate Report</button>
+        <button class="generateButton RedButton" id="GenerateButtonAll" onclick="RequestAndGenerateFullreport()">All Suppliers(Full Report)</button>
+
+        <a id="dlink" style="display:none;"></a>
+
+        <div class="" id="ExportDiv">
+            <input class="generateButton" type="button" onclick="tableToExcel('DisplayTable', 'Buyer Stock Report', '.xls')" value="Export to Excel">
+        </div>
+
+        <div class="InvisibleDiv errorDiv" id="ErrorDiv">
+            Please compleate required information
+        </div>
+        <div class="InvisibleDiv errorDiv" id="SkuErrorDiv">
+            Sku must be 6 Digits long.
+        </div>
+        <div class="InvisibleDiv" id="LoadingDiv">
+            <img src="~/Content/Images/ajax-loader.gif" />
+            <div>
+                <div id="CurrentLoading"></div>
+                <div id="NumberLoading"></div>
+            </div>
+            <div>
+                <div id="CurrentLoading2"></div>
+                <div id="NumberLoading2"></div>
+            </div>
+        </div>
+    </div>
+<div id="TableArea">
+    <table id="DisplayTable">
+    </table>
+</div>
+
+
+@section css {
+    @Styles.Render("~/Content/Css/Tables/BuyerGodReportTable.css")   
+}
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Reports.js")
+}

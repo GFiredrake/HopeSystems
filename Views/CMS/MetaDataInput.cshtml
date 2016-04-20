@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "MetaData Input";
+}
+
+<h2>Metadata Input</h2>
+
+<div class="HiddenDiv SavedDiv">The Metadata Has been saved</div>
+
+    @Html.DropDownList("MetadataType")<button type="button" id="MetadataTypeButton">Select</button><div id="MetadataTypeError"></div><br />
+    
+    <div class="HiddenDiv LanguageSelect">
+        <select id="languageSelector">
+            <option value="0">Please Select Language...</option>
+        </select>
+        <span></span> <button type="button" id="languageSelectButton">Select</button><div id="LanguageError"></div><br />
+    </div>        
+    
+    <div class="HiddenDiv MetadataSelect">   
+        <select id="MetadatorSelector">
+            <option value="0">Please Select one...</option>
+        </select>
+        <span></span><button type="button" id="MetadataSelectButton">Select</button><div id="MetadateError"></div><br />    
+    </div>  
+
+    <div class="HiddenDiv MetadataInput"><textarea rows="10" id="MetadataInput" ></textarea><br /></div>
+
+
+    <div class="HiddenDiv Savebutton"><button type="button" id="SaveButton">Save Data</button><div id="SaveError"></div><br /></div>
+
+
+    
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Metadata.js")
+}

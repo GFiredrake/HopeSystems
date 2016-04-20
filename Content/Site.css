@@ -1,0 +1,715 @@
+﻿html {
+  overflow-y: scroll;
+}
+
+body {
+    font-size: 12px;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;    
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+
+#body {
+padding: 1%;
+    float: left;
+    margin-bottom: 20px;
+    width: 98%;
+}
+
+#extenderDiv {
+    height: 30px;
+}
+
+#footer {
+   position:fixed;
+   bottom:0;
+   width:100%;
+   height:20px;   
+   border-top: 1px solid #ccc;
+   text-align:right;
+   color: #ccc;
+   margin-right:10px;
+}
+
+h1 {
+    float: left;
+    width: 100%;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+h2 {
+    float: left;
+    width: 100%;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+h3 {
+    float: left;
+    width: 100%;
+    text-transform: uppercase;
+    border-bottom: 1px dashed #aaa;
+}
+
+table {
+    min-width:600px!important;
+    overflow: scroll; /* Scrollbar are always visible */
+    overflow: auto;   /* Scrollbar is displayed as it's needed */
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Created Styles
+-----------------------------------------------------------*/
+
+div#buttonDiv a {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-right: 1px solid #ccc;
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+div#MenuDiv a:hover {
+    background-color: #A01D5D;
+}
+
+#BannerDiv {
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+#buttonDiv {
+    width: 100%;
+    background: #ED137D;
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+}
+
+#BannerDiv img{
+    height:60px;
+
+}
+
+.RedButton {
+        background-color: #f00;
+        color: #fff;
+}
+
+.LogInControllDiv {
+    margin-top: 9px;
+    font-size: 19px;
+}
+
+.LogInBox {
+    height: 20px;
+    width: 100%;
+}
+
+.errorDiv {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 5px;
+    font-size: 19px;
+    text-align: center;
+    color: #F00;
+    margin-left: -41px;
+}
+
+#LogInButton {
+    margin-top: 18px;
+    height: 28px;
+    width: 173px;
+    font-size: 19px;
+}
+
+
+#SkuInput {
+        width: 291px;
+    height: 21px;
+    font-size: 18px;
+}
+#SuppliersAvailable{
+    width: 295px;
+    height: 27px;
+    font-size: 18px;
+}
+
+#YearsAvailable, #MonthsAvailable {
+    width: 48%;
+    margin: 1px 4px 1px 1px;
+    height: 27px;
+    font-size: 18px;
+    float: left;
+}
+
+#generateButton {
+    width: 295px !important;
+    height: 30px !important;
+    font-size: 18px !important;
+}
+
+.HiddenDiv {
+    visibility: hidden;
+}
+
+.InvisibleDiv {
+    display: none;
+}
+
+th, td {
+   border: 1px solid black;
+   min-width: 50px;
+}
+
+table {
+    margin-top: 50px;
+    min-width:100%;
+}
+
+tr:nth-child(odd) {
+    background: #CCC;
+}
+
+tr:nth-child(1) {
+    background: #ED137D;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.dateInput {
+    width:140px;
+}
+
+#LoadingDiv {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+td {
+    height: 50px;
+}
+
+.RoundButton:hover {
+  background: #db1515;
+  text-decoration: none;
+}
+
+.Hidden {
+    visibility: hidden;
+}
+
+#rightErrorDiv {
+    padding-top: 75px;
+    margin-left: 75px;
+    float: left;
+}
+
+#leftErrorDiv {
+    float: left;
+    margin-top: 25px;
+}
+
+.centeredText {
+    text-align: center;
+    margin-right: 0.5%;
+}
+
+table {
+    border-spacing: 0!important;
+}
+
+td {
+    padding: 0px 5px!important;
+}
+
+#CurrentLoading, #NumberLoading {
+    float:left;
+}
+
+select {
+    width: 100%;
+    border-radius: 2px;
+    background-image: url("https://www.hochanda.com/Styles/Images/product_list_icons.png") !important;
+    background-position: right !important;
+    background-position-y: -284px !important;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 34px !important;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+input.button {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    line-height: 34px;
+    display: inline-block;
+    margin: 10px 0 5px 0;
+    color: #fff;
+    background-color: #ed137d;
+    text-align: center;
+    max-width: 300px;
+    cursor: pointer;
+    border: none;
+    padding: 0 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.CenteredDiv select {
+    width: 100%;
+}
+
+
+.generateButton {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    line-height: 34px;
+    display: inline-block;
+    margin: 10px 0 5px 0;
+    color: #fff;
+    background-color: #ed137d;
+    text-align: center;
+    max-width: 300px;
+    cursor: pointer;
+    border: none;
+    padding: 0 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    float: left;
+    width: 100%;
+    max-width: 100%;
+}
+
+#DayAmmount, 
+#CurrencyType {    
+    width: 50%;
+    float: left;
+}
+
+
+@media (min-width: 520px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .CenteredDiv select {
+        width: 33%;
+        max-width: 33%;
+        float: left;
+    }
+
+    .generateButton {
+        width: 32%;
+        margin: 0;
+    }
+
+    #DayAmmount, 
+    #CurrencyType {    
+        margin-right: 1%;
+    }
+
+}
+
+.centerTd{
+    text-align: center;
+}
+
+.rightTd{
+    text-align: right;
+}
+
+.Bold {
+    font-weight:bold;
+}
+
+/*Monitoring Start*/
+#MainMonitoringDiv {
+    font-size: 1.5em;
+    margin-top: 50px;
+    height: 120px;
+}
+
+#FlexiErrorsToday {
+    margin-left: 3%;
+}
+
+.MonitoringTripleContainer {
+    float: left;
+    width: 33%;
+}
+
+.MonitorContainerDiv {
+    float:none;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+    color: #FFF;
+    width: 95%;
+    height: 95%;
+    position: relative;
+    margin: 1% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #ff0000;
+    font-size: 2em;
+}
+
+.ModalSales > div {
+    color: #000;
+    width: 95%;
+    height: 95%;
+    position: relative;
+    margin: 1% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff !important;
+    font-size: 2em;
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+
+.BoxDiv {
+    width: 23%;
+    height: 208px;
+    background: #007c0e;
+    float: left;
+    margin: 0.5%;
+    margin-top: 0.5%;
+    padding-left: 1%;
+    font-size: 3.5em;
+    color: #fff;
+}
+
+.RedBoxDiv {
+    background: #db1515;
+    color: #fff;
+}
+
+.AmberBoxDiv {
+    background: #ffa500;
+}
+
+#ReloadDiv {
+    background: #000;
+    height: 55px;
+    font-size: 35px;
+}
+
+#ReloadDiv p {
+    color: #fff;
+}
+
+/*Monitoring End*/
+
+/*Pol Sheet Start*/
+#MainPolIndex {
+    width: 100%;
+}
+
+#startDate {
+    width: 100%;
+    height: 20%;
+    margin-bottom: 5%;
+    font-size: 25px;
+}
+
+#startTime {
+    width: 100%;
+    height: 20%;
+    margin-bottom: 5%;
+    font-size: 25px;
+}
+
+#prepNotes {
+    width: 100%;
+    height: 100px;
+    font-size: 25px;
+}
+
+#polButton {
+    width: 100%;
+    height: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+#checkPolSpan {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size:1.5em;
+}
+/*Pol Sheet End*/
+
+/*Confirmation start*/
+#successDiv {
+    font-weight: bold;
+    color: #ED137D;
+}
+
+#failureDiv {
+    font-weight: bold;
+    color: #f00;
+}
+
+/*confirmation end*/
+
+
+/* ########### DASHBOARD ########### */
+
+    .BoxDiv .Bold {
+        text-transform: uppercase;
+        line-height: 1em;
+        font-size: 1.7em;    
+        min-height: 90px;
+        display: block;
+        color:#fff;    
+        border-bottom: 1px dashed rgba(255,255,255,0.3);
+    }
+
+    .BoxDiv {
+        padding: 10px 1%;
+        width: 47%;
+        height: 146px;
+        font-size: 1em;
+        color: yellow;
+    }
+
+    div#ReloadDiv {
+        font-size: 1em;
+        height: auto;
+        line-height: 1em;
+        display: block;
+        float: left;
+        width: 100%;
+    }
+
+    .BoxDiv span {
+        font-size: 3em;
+    }
+
+/* ########### :END: DASHBOARD ########### */
+
+
+@media (min-width: 520px) {
+
+    /* ########### DASHBOARD ########### */
+
+    .BoxDiv {
+        height: 110px;
+    }
+
+    .BoxDiv .Bold {
+        min-height: 50px;
+    }
+
+    /* ########### :END: DASHBOARD ########### */
+}
+
+
+@media (min-width: 760px) {
+
+    /* ########### DASHBOARD ########### */
+
+    .BoxDiv .Bold {
+        text-transform: uppercase;
+        font-size: 2em;
+        min-height: 134px;
+    }
+
+    .BoxDiv {
+        width: 30%;
+        height: 184px;
+    }
+
+    /* ########### :END: DASHBOARD ########### */
+
+}
+
+
+
+@media (min-width: 960px) {
+
+    /* ########### DASHBOARD ########### */
+
+    .BoxDiv .Bold {
+        min-height: 115px;
+    }
+
+    .BoxDiv {
+        width: 22%;
+        height: 160px;
+        font-size: 1em;
+    }
+
+    /* ########### :END: DASHBOARD ########### */
+    
+
+}
+
+
+@media (min-width: 1500px) {
+
+    /* ########### DASHBOARD ########### */
+
+    .BoxDiv {
+        width: 22%;
+        height: 208px;
+        font-size: 1.5em;
+    }
+
+    /* ########### :END: DASHBOARD ########### */
+     
+
+}
+
+#dialog {
+    display: none;
+}
+
+#Director, #Floor, #Guest, #datePicker, #ProducerName, #PresenterName {
+    min-height: 25px!important;
+    min-width: 295px!important;
+}
+
+#ProducerNotes, #DirectorNotes, #FloorNotes, #ForwardNotes {
+    min-height: 500px!important;
+    min-width: 800px!important;
+}
+
+
+/* Charts */
+.chart-legend li span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.ChartDiv {
+    float: left;
+    margin-right: 25px;
+}

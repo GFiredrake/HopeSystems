@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (@ViewContext.ViewData.ModelState.IsValid)
+    {
+        ViewBag.Title = "hope:tools - Flexi Buy Report";
+    }
+}
+<h1 class="centeredText">Flexi Buy Report</h1>
+<div class="CenteredDiv">
+    <div id="DateDiv">
+        @Html.DropDownList("YearsAvailable")
+        <select name="MonthsAvailable" id="MonthsAvailable" onchange="" size="1">
+            <option value="00">...</option>
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+            <option class="InvisibleDiv" value="1">January</option>
+            <option class="InvisibleDiv" value="2">February</option>
+            <option class="InvisibleDiv" value="3">March</option>
+            <option class="InvisibleDiv" value="4">April</option>
+            <option class="InvisibleDiv" value="5">May</option>
+            <option class="InvisibleDiv" value="6">June</option>
+            <option class="InvisibleDiv" value="7">July</option>
+            <option class="InvisibleDiv" value="8">August</option>
+        </select>
+    </div>
+    <button class="generateButton" id="GenerateButton" onclick="GenerateFlexiPayReportReport()">Generate Report</button>
+    <a id="dlink" style="display:none;"></a>
+    <div class="" id="ExportDiv">
+        <input class="generateButton" type="button" onclick="tableToExcel('DisplayTable', 'Flexi Buy Report', '.xls')" value="Export to Excel">
+    </div>
+    <div class="InvisibleDiv errorDiv" id="ErrorDiv">
+        Please compleate required information
+    </div>
+    
+    <div class="InvisibleDiv" id="LoadingDiv">
+        <img src="~/Content/Images/ajax-loader.gif" />
+    </div>
+
+</div>
+<div id="TableArea">
+    <table id="DisplayTable"></table>
+</div>
+
+@section css {
+    @Styles.Render("~/Content/Css/Tables/FlexiBuyTable.css")
+}
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/FlexiPayReport.js")
+}

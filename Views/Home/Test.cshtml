@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+<canvas id="DynamicPie" width="200" height="200"></canvas>
+
+<canvas id="DynamicLine" width="600" height="200"></canvas>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/Chart.js")
+    @Scripts.Render("~/Content/Scripts/test.js")
+}

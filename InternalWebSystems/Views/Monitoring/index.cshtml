@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "index";
+}
+
+<p class="centeredText">This page refreshes every 1 minuets. Last refreshed on <span class="Bold" id="LastReloaded"></span></p>
+<div id="MainMonitoringDiv">
+    <div class="MonitorContainerDiv">
+        <div class="MonitoringTripleContainer">
+            <div><span class="Bold"># of Customers(Total):</span> <span id="NumberOfCustomers"></span></div>
+            <div><span class="Bold">Newest Customer Joined(internet):</span> <span id="NewestCustomerCreated"></span> Minutes ago</div>
+            <div><span class="Bold">Newest Customer Joined(phone):</span> <span id="NewestCustomerCreatedByPhone"></span> Minutes ago</div>
+            @*<div><span class="Bold"># of Unshipable Warehouse Items:</span> <span id="NumberOfUnshipableWarehouseItems"></span> Fake</div>*@
+        </div>
+        <div class="MonitoringTripleContainer">
+            <div><span class="Bold"># of Orders Today:</span> <span id="NewOrdersToday"></span></div>
+            <div><span class="Bold">Last Order Made:</span> <span id="LastOrderTime"></span> Minutes ago</div>
+            <div><span class="Bold">Newest Customer Joined:</span> <span id="NewestCustomerCreated"></span> Minutes ago</div>
+            <div><span class="Bold">Oldest Unshiped Warehouse Item:</span> <span id="OldestUnshipedWarehouseItems"></span></div>
+            @*<div><span class="Bold">Flexibuy Item Over created:</span> <span id="FlexibuyHasToManyEntrys"></span></div>*@
+        </div>
+        <div class="MonitoringTripleContainer">
+            <div><span class="Bold"># of Orders Stuck in Fraud Check:</span> <span id="NumberOfItemsSuckOnFraudCheck"></span></div>
+            <div><span class="Bold"># of Items Awaiting Pick Sheets:</span> <span id="NumberOfItemsAwaitingPickSheet"></span></div>
+            <div><span class="Bold">Percentage of Web Orders:</span> <span id="PercentageOfWebTrafic"></span>%</div>
+        </div>
+    </div>
+
+    
+</div>
+<div id="MonitoringBoxesDiv">
+    <div class="MonitoringWarningDiv">
+        <div id="FlexiDiv" class="BoxDiv"><span class="Bold">Flexibuy Item Under created:</span><br /><span id="FlexibuyHasEnoughEntrys"></span></div>
+        <div id="LabelerDiv" class="BoxDiv"><span class="Bold">Labeler Last Run:</span><br /><span id="LabelerLastRun"></span> Minutes ago</div>
+        <div id="PaymentAppDiv" class="BoxDiv"><span class="Bold">Payment App Last Run:</span><br /><span id="PaymentAppLastRun"></span> Minutes ago</div>
+        @*<div id="FreedomDiv" class="BoxDiv"><span class="Bold">Freedom With no Payments:</span><br /><span id="FreedomWithoutRenwals"></span></div>*@
+        <div id="PaymentsAsPaidDiv" class="BoxDiv"><span class="Bold">Payment As Paid Run:</span><br /><span id="PaymentsAsPaidLastRun"></span> Minutes ago</div>
+    </div>
+</div>
+
+
+<a class="HiddenDiv" id="myAnchor" href="#openModal">Open Modal</a>
+
+<div id="openModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close" id="close" onclick="CloseModal()">X</a>
+        <h2>Error</h2>
+        <p><span class="Bold">The following errors have been reported by hope.tools.monitoring .</span></p>
+        <div id="ErrorModal"></div>
+    </div>
+</div>
+
+
+    @*<audio id="myTune" loop>
+        <source src="~/Content/Sounds/mp3/air-raid-siren-alert.mp3" type="audio/mpeg" />
+    </audio>*@
+
+
+<input type="hidden" name="FlexiInput" id="FlexiInput" value="0">
+<input type="hidden" name="LabelerInput" id="LabelerInput" value="0">
+<input type="hidden" name="PaymentInput" id="PaymentInput" value="0">
+@*<input type="hidden" name="FreedomInput" id="FreedomInput" value="0">*@
+<input type="hidden" name="PaymentAsPaidInput" id="PaymentAsPaidInput" value="0">
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/MonitoringMain.js")
+}

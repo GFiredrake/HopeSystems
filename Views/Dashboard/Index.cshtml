@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="ReloadDiv">
+    <p class="centeredText">This page refreshes every 1 min. Last refreshed on <span class="Bold" id="LastReloaded">Mon Mar 07 2016 14:56:57 GMT+0000 (GMT Standard Time)</span></p>
+</div>
+<input type="checkbox" name="newOders" id="newOders" checked>Uncheck to alert new orders
+<div id="MonitoringBoxesDiv">
+    <div class="MonitoringWarningDiv">
+        <div id="LastOrderDiv" class="BoxDiv"><span class="Bold">Last Order Made:</span><span id="LastOrderTime"></span> Mins ago</div>
+        <div id="NewOrdersTodayDiv" class="BoxDiv"><span class="Bold">Orders Today:</span><span id="NewOrdersToday"></span></div>
+        <div id="PercentageOfWebTraficDiv" class="BoxDiv"><span class="Bold">Web Orders:</span><span id="PercentageOfWebTrafic"></span> % Today</div>
+        <div id="PercentageOfPhoneTraficDiv" class="BoxDiv"><span class="Bold">Phone Orders</span><span id="PercentageOfPhoneTrafic"></span> % Today</div>
+
+        <div id="NewestCustomerCreatedByWebDiv" class="BoxDiv"><span class="Bold">Newest Web Customer:</span><span id="NewestCustomerCreatedByWeb"></span> Mins ago</div>
+        <div id="NewestCustomerCreatedByPhoneDiv" class="BoxDiv"><span class="Bold">Newest Phone Customer:</span><span id="NewestCustomerCreatedByPhone"></span> Mins ago</div>
+        <div id="NumberOfItemsAwaitingPickSheetDiv" class="BoxDiv"><span class="Bold">Items Awaiting Pick Sheet:</span><span id="NumberOfItemsAwaitingPickSheet"></span></div>
+        <div id="OldestUnshipedWarehouseItemsDiv" class="BoxDiv"><span class="Bold">Oldest Unshipped Warehouse Item:</span><span id="OldestUnshipedWarehouseItems"></span> Days ago</div>
+
+        <div id="FreedomMembersJoinedDiv" class="BoxDiv"><span class="Bold">Freedom Members:</span><span id="FreedomMembersJoined"></span> Joined Today</div>
+        <div id="FreedomMembersRenewedDiv" class="BoxDiv"><span class="Bold">Freedom Members:</span><span id="FreedomMembersRenewed"></span> Renewed Today</div>
+        <div id="NewCustomersTodayDiv" class="BoxDiv"><span class="Bold">New Customers Today:</span><span id="NewCustomersToday"></span></div>
+        <div id="WebVsPhoneOver7DaysDiv" class="BoxDiv"><span class="Bold">Web vs Phone Last 7 Days :</span><span id="WebVsPhoneOver7Days"></span> %</div>
+    </div>
+</div>
+
+<input type="hidden" name="OrdersMade" id="OrdersMade" value="0">
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Dashboard.js")
+}

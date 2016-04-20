@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "HighestPnPSpend";
+}
+
+<h2>Customers with Highest P&P Spend</h2>
+
+
+    Up to @Html.DropDownList("HowManyPeople") Customers for the last @Html.DropDownList("HowManyMonths") Months
+    <br/>
+    <br />
+    <button class="generateButton" id="GenerateButton" onclick="GeneratePnPReport()">Generate Report</button>
+    <br />
+    <br />
+    <br />
+    <div id="CustomersToMakeSavingDiv"></div>
+    <div id="TableArea">
+        <table id="DisplayTable"></table>
+    </div>
+    <br />
+    <br />
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Reports.js")
+}

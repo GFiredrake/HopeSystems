@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "PromotionalFreedomPnPSavings";
+}
+
+<h2>Promotional Freedom P&P Savings</h2>
+
+<input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+<input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+<br />
+<br />
+@Html.DropDownList("CurrencyType")
+<br/>
+<br/>
+<button class="generateButton" id="GenerateButton" onclick="GeneratePromotionalFreedomPnPSavings()">Generate Report</button>
+<br />
+<div class="InvisibleDiv" id="LoadingDiv">
+    <img src="~/Content/Images/ajax-loader.gif" />
+</div>
+<br />
+<div id="TableArea">
+    <table id="DisplayTable">
+    </table>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Reports.js")
+}

@@ -1,0 +1,18 @@
+﻿@{
+    if (@ViewContext.ViewData.ModelState.IsValid)
+        {
+            ViewBag.Title = "Index";
+        }
+}
+<h3>Please Select a Report</h3>
+
+<p>
+    This page allows you to select what Report you would like to view from the list available to the selected department.
+</p>
+
+@using (Html.BeginForm("DisplayReport", "Reporting"))
+{
+    @Html.DropDownList("ReportsAvailable")
+    
+    <input class="button" id="submit LogInButton" type="submit" value="Go to Reports" />
+}

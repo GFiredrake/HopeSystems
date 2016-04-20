@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (@ViewContext.ViewData.ModelState.IsValid)
+    {
+        ViewBag.Title = "hope:tools - Sales Overview";
+    }
+}
+<h1 class="centeredText">Sales Overview</h1>
+<div class="CenteredDiv">
+
+        <select id="DayAmmount">
+            <option value="1">1 Day</option>
+            <option value="7">7 Days</option>
+            <option value="14">14 Days</option>
+            <option value="30" selected="selected">30 Days</option>
+            <option value="60">60 Days</option>
+        </select>
+
+        @Html.DropDownList("CurrencyType")
+
+        <button class="generateButton" id="GenerateButton" onclick="GenerateSalesOverviewReport()">Generate Report</button>
+
+        <a id="dlink" style="display:none;"></a>
+
+        <div class="InvisibleDiv errorDiv" id="ErrorDiv">
+            Please compleate required information
+        </div>
+        <div class="InvisibleDiv" id="LoadingDiv">
+            <img src="~/Content/Images/ajax-loader.gif" />
+        </div>
+    </div>
+<div id="TableArea">
+    <table id="DisplayTable1">
+    </table>
+    <br/>
+    <h2>Items Sold Today</h2>
+    <table id="DisplayTable2">
+    </table>
+</div>
+
+
+@section css {
+    @Styles.Render("~/Content/Css/Tables/SalesOverviewReportTable.css")   
+}
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Reports.js")
+    @Scripts.Render("~/Content/Scripts/SalesOverview.js")
+}

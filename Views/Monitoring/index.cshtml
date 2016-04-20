@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMonitor.cshtml";
+}
+
+<div id="ReloadDiv">
+    <p class="centeredText">This page refreshes every 10 min. Last refreshed on <span class="Bold" id="LastReloaded"></span></p>
+</div>
+<input type="checkbox" name="IsMainMonitor" id="isMainMonitor" checked>Check to turn off emails<input type="checkbox" name="newOders" id="newOders" checked>Uncheck to alert new orders<br>
+<div id="MonitoringBoxesDiv">
+    <div class="MonitoringWarningDiv">
+        <div id="LastOrderDiv" class="BoxDiv"><span class="Bold">Last Order Made:</span><span id="LastOrderTime"></span> Mins ago</div>
+        <div id="LabelerDiv" class="BoxDiv"><span class="Bold">Labeler Last Run:</span><span id="LabelerLastRun"></span> Mins ago</div>
+        <div id="PaymentAppDiv" class="BoxDiv"><span class="Bold">Pay App Last Run:</span><span id="PaymentAppLastRun"></span> Mins ago</div>
+        <div id="PaymentsAsPaidDiv" class="BoxDiv"><span class="Bold">Updated As Paid:</span><span id="PaymentsAsPaidLastRun"></span> Mins ago</div>
+
+        <div id="OrdersDiv" class="BoxDiv"><span class="Bold">Orders Today:</span><span id="NewOrdersToday"></span></div>
+        <div id="PercentageDiv" class="BoxDiv"><span class="Bold">Web Orders:</span><span id="PercentageOfWebTrafic"></span> % Today</div>
+        <div id="NewestCustWeb" class="BoxDiv"><span class="Bold">Newest Web Customer:</span><span id="NewestCustomerCreated"></span> Mins ago</div>
+        <div id="NewestCustPho" class="BoxDiv"><span class="Bold">Newest Phone Customer:</span><span id="NewestCustomerCreatedByPhone"></span> Mins ago</div>
+
+        <div id="FlexiDiv" class="BoxDiv"><span class="Bold">Flexibuy Order Errors:</span><span id="FlexibuyHasEnoughEntrys"></span> Error Now.<span id="FlexiErrorsToday"></span> Total Errors Today.</div>
+        <div id="FraudDiv" class="BoxDiv"><span class="Bold">Orders Stuck in Fraud Check:</span><span id="NumberOfItemsSuckOnFraudCheck"></span></div>
+        <div id="PickSheetDiv" class="BoxDiv"><span class="Bold">Items Awaiting Pick Sheet:</span><span id="NumberOfItemsAwaitingPickSheet"></span></div>
+        <div id="OrdersDiv" class="BoxDiv"><span class="Bold">Oldest Unshipped Warehouse Item:</span><span id="OldestUnshipedWarehouseItems"></span> Days ago</div>
+        <div id="DuplicateOrdersDiv" class="BoxDiv"><span class="Bold">Potential Duplicate Orders:</span><span id="PotentialDuplicateOrders"></span> Today</div>
+    </div>
+</div>
+
+
+<a class="HiddenDiv" id="myAnchor" href="#openModal">Open Modal</a>
+
+<div id="openModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close" id="close" onclick="CloseModal()">X</a>
+        <h2>Error </h2>
+        <p><span class="Bold">The following errors have been reported by hope.tools.monitoring .</span></p>
+        <div id="ErrorModal"></div>
+    </div>
+</div>
+
+
+
+
+<input type="hidden" name="FlexiInput" id="FlexiInput" value="0">
+<input type="hidden" name="LabelerInput" id="LabelerInput" value="0">
+<input type="hidden" name="PaymentInput" id="PaymentInput" value="0">
+<input type="hidden" name="PaymentAsPaidInput" id="PaymentAsPaidInput" value="0">
+<input type="hidden" name="PotentialDuplicateOrders" id="PotentialDuplicateOrdersInput" value="0">
+<input type="hidden" name="OrdersMade" id="OrdersMade" value="0">
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/MonitoringMain.js")
+}

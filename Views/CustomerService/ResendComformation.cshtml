@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Resend Comformation";
+}
+
+<h2>Resend Confirmation Email</h2>
+
+
+@{ using (Html.BeginForm("ResendComfomationEmail", "CustomerService", FormMethod.Post))
+ {
+    <span>Please enter an Order Id</span>
+    <input type="number" name="orderIdInput" id="OrderIdInput" >
+    <input type="submit" value="Resend Confirmation Email" id="resendButton"  />
+ }
+}
+
+@Html.Raw(ViewBag.HtmlStr)
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/resend.js")
+}

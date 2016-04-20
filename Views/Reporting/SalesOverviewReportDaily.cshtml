@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "SalesOverviewReportDaily";
+}
+
+<h2>Sales Overview Report Daily</h2><a href="SalesOverviewReport?quickreport=yes&Days=@ViewBag.Days&Currency=@ViewBag.Currency"><span>Back</span></a>
+
+@ViewBag.WhatDate
+<div class="InvisibleDiv" id="LoadingDiv">
+    <img src="~/Content/Images/ajax-loader.gif" />
+</div>
+<div id="TableArea">
+    <table id="DisplayTable1"></table>
+</div>
+
+<a class="HiddenDiv" id="myAnchor" href="#openModal">Open Modal</a>
+
+<div id="openModal" class="modalDialog ModalSales">
+    <div>
+        <a href="#close" title="Close" class="close" id="close" onclick="CloseModal()">X</a>
+        <h2>Hourly Sales </h2>
+
+        <div class="InvisibleDiv" id="LoadingDiv2">
+            <img src="~/Content/Images/ajax-loader.gif" />
+        </div>
+
+        <div id="TableArea">
+            <table id="DisplayTable3"></table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Reports.js")
+    @Scripts.Render("~/Content/Scripts/SalesOverview.js")
+}

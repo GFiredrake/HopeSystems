@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "NumberOfOrdersByIp";
+}
+
+<h2>Number Of Orders By Ip</h2>
+<br />
+<button class="generateButton" id="GenerateButton" onclick="GenerateOrdersByIpReport()">Generate Report</button>
+<br />
+<br />
+<div id="TableArea">
+    <table id="DisplayTable"></table>
+</div>
+<br />
+<br />
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/Reports.js")
+}
+
+
