@@ -6,10 +6,12 @@
     }
 }
 <h1 class="centeredText">Buyer Stock Report</h1>
+<h4 class="centeredText">Please choose SKU or Suppliername</h4>
 <div class="CenteredDiv">
-
-        @Html.RadioButton("Answer", "A", new { @class = "ButtonA" }) <span>SKU Number</span> 
+    <div class="radio_btn_position">
+        @Html.RadioButton("Answer", "A", new { @class = "ButtonA" }) <span>SKU Number</span>
         @Html.RadioButton("Answer", "B", new { @class = "ButtonB" }) <span>Supplier Name</span>
+        </div>
         <div id="SelectionDiv">
             <div class="InvisibleDiv" id="SkuDiv">
                 <input type="number" name="skuInput" id="SkuInput" max="999999">
@@ -22,6 +24,7 @@
             <input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
             <input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
         </div>
+
         <button class="generateButton" id="GenerateButton" onclick="GenerateBuyerGodReport()">Generate Report</button>
         <button class="generateButton RedButton" id="GenerateButtonAll" onclick="RequestAndGenerateFullreport()">All Suppliers(Full Report)</button>
 
