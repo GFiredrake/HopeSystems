@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternalWebSystems.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -81,6 +82,8 @@ namespace InternalWebSystems.Controllers
                         obj.Add(myReader["OldCustomers"].ToString());
                         obj.Add(myReader["FreedomCustomers"].ToString());
                         obj.Add(myReader["NonFredomCustomers"].ToString());
+                        obj.Add(myReader["WebOrders7"].ToString());
+                        obj.Add(myReader["PhoneOrders7"].ToString());
                     }
 
                     connection.Close();
@@ -88,6 +91,59 @@ namespace InternalWebSystems.Controllers
             }
 
             return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetPieChartDataComplex()
+        {
+            List<List<ReportVariables>> biglist = new List<List<ReportVariables>>();
+            List<ReportVariables> obj = new List<ReportVariables>();
+            List<ReportVariables> obj2 = new List<ReportVariables>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_Overview_NumberOfPostageUsed"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ReportVariables newItem = new ReportVariables();
+                        newItem.Variable1 = myReader["NumberOfOrders"].ToString();
+                        newItem.Variable2 = myReader["CourierType"].ToString();
+                        obj.Add(newItem);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_Overview_NumberOfPostageUsed7Day"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ReportVariables newItem = new ReportVariables();
+                        newItem.Variable1 = myReader["NumberOfOrders"].ToString();
+                        newItem.Variable2 = myReader["CourierType"].ToString();
+                        obj2.Add(newItem);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            biglist.Add(obj);
+            biglist.Add(obj2);
+
+            return Json(biglist, JsonRequestBehavior.AllowGet);
         }
     }
 }

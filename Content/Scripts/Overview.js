@@ -1,9 +1,9 @@
 ﻿window.onload = function () {
-    var ColourList = ['#ED137D', '#314b9f', '#872990 '];
-    var HighLightList = ['#f259a4', '#6e81bb', '#ab69b1'];
+    var ColourList =    ['#ED137D', '#314b9f', '#872990', '#25AAE1', '#8DC63F', '#CE3234'];
+    var HighLightList = ['#f259a4', '#6e81bb', '#ab69b1', '#7CCCED', '#BADC8B', '#E18485'];
     var RGBColourList = ["rgba(237,19,125,0.5)", "rgba(49,75,159,0.5)", "rgba(135,41,144,0.5)"];
 
-    //PieChartDataList
+    //SimplePieChartDataList
     $.ajax({
         type: "Get",
         url: "/Overview/GetPieChartData",
@@ -35,7 +35,6 @@
             segmentShowStroke: false,
             animateRotate: true,
             animateScale: false,
-            percentageInnerCutout: 50,
         }
 
         var CustomerNormalVsFreedomPie = document.getElementById("PieCustomerNormalVsFreedom").getContext("2d");
@@ -55,40 +54,95 @@
         var CustomersNewVsExistingPie = document.getElementById("PieCustomersNewVsExisting").getContext("2d");
         var CustomersNewVsExistingDynamicPieNew = new Chart(CustomersNewVsExistingPie).Pie(CustomersNewVsExistingDynamicData, CustomersNewVsExistingOptions);
         document.getElementById('PieCustomersNewVsExistingLegend').innerHTML = CustomersNewVsExistingDynamicPieNew.generateLegend();
+        //Need Data - Web orders Vs Phone Orders Over 7 Days
+        var WebVsPhone7DaysCount = 2;
+        var WebVsPhone7DaysDynamicData = [];
+        WebVsPhone7DaysDynamicData[0] = { value: data[6], color: ColourList[0], highlight: HighLightList[0], label: "Web Orders" }
+        WebVsPhone7DaysDynamicData[1] = { value: data[7], color: ColourList[1], highlight: HighLightList[1], label: "Phone Orders" }
+
+        var WebVsPhone7DaysOptions = {
+            segmentShowStroke: false,
+            animateRotate: true,
+            animateScale: false,
+        }
+
+        var WebVsPhone7DaysPie = document.getElementById("PieWebVsPhone7Days").getContext("2d");
+        var WebVsPhone7DaysDynamicPieNew = new Chart(WebVsPhone7DaysPie).Pie(WebVsPhone7DaysDynamicData, WebVsPhone7DaysOptions);
+        document.getElementById('PieWebVsPhone7DaysLegend').innerHTML = WebVsPhone7DaysDynamicPieNew.generateLegend();
     })
     .fail(function (xhr, status, error) {
         alert("an error has occured, Please try again. if this problem persists please seak technical support : " + xhr.responseText);
     });
 
+    //ComplexPieChart
+    $.ajax({
+        type: "Get",
+        url: "/Overview/GetPieChartDataComplex",
+        data: {},
+        dataType: "json"
+    })
+    .done(function (data) {
+        var pause = 1;
+        var one = data[0];
+        var two = data[1];
+        //Number of each postage type
+        var NumberOfEachPostageTypeCount = one.length;
+        var NumberOfEachPostageTypeDynamicData = [];
 
+
+        for (var j = 0; j < NumberOfEachPostageTypeCount;) {
+            NumberOfEachPostageTypeDynamicData[j] =
+                {
+                    value: one[j].Variable1.toString(),
+                    color: ColourList[j],
+                    highlight: HighLightList[j],
+                    label: one[j].Variable2.toString()
+                }
+            j++;
+        }
+
+        var NumberOfEachPostageTypeOptions = {
+            segmentShowStroke: false,
+            animateRotate: true,
+            animateScale: false,
+        }
+
+        var NumberOfEachPostageTypePie = document.getElementById("PieNumberOfEachPostageType").getContext("2d");
+        var NumberOfEachPostageTypeDynamicPieNew = new Chart(NumberOfEachPostageTypePie).Pie(NumberOfEachPostageTypeDynamicData, NumberOfEachPostageTypeOptions);
+        document.getElementById('NumberOfEachPostageTypelegend').innerHTML = NumberOfEachPostageTypeDynamicPieNew.generateLegend();
+
+        //Number of each postage type 7 days
+        var NumberOfEachPostageType7DaysCount = two.length;
+        var NumberOfEachPostageType7DaysDynamicData = [];
+
+        for (var j = 0; j < NumberOfEachPostageType7DaysCount;) {
+            NumberOfEachPostageType7DaysDynamicData[j] =
+                {
+                    value: two[j].Variable1.toString(),
+                    color: ColourList[j],
+                    label: two[j].Variable2.toString()
+                }
+            j++;
+        }
+
+        var NumberOfEachPostageType7DaysOptions = {
+            segmentShowStroke: false,
+            animateRotate: true,
+            animateScale: false,
+        }
+
+        var NumberOfEachPostageType7DaysPie = document.getElementById("PieNumberOfEachPostageType7Days").getContext("2d");
+        var NumberOfEachPostageType7DaysDynamicPieNew = new Chart(NumberOfEachPostageType7DaysPie).Pie(NumberOfEachPostageType7DaysDynamicData, NumberOfEachPostageType7DaysOptions);
+        document.getElementById('NumberOfEachPostageType7DaysLegend').innerHTML = NumberOfEachPostageType7DaysDynamicPieNew.generateLegend();
+       
+    })
+    .fail(function (xhr, status, error) {
+
+    });
    
 
-    //Need Data - Web orders Vs Phone Orders Over 7 Days
-    var WebVsPhone7DaysCount = 2;
-    var WebVsPhone7DaysDynamicData = [];
-    for (var l = 0; l < WebVsPhone7DaysCount;) {
-        WebVsPhone7DaysDynamicData[l] =
-            {
-                label: "Dataset " + (l + 1).toString(),
-                fillColor: RGBColourList[l],
-                strokeColor: ColourList[l],
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: ColourList[l],
-                pointHighlightFill: ColourList[l],
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100)]
-            }
-        l++;
-    }
-
-
-    var WebVsPhone7DaysDynamicDataWithLabels = {
-        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-        datasets: WebVsPhone7DaysDynamicData
-    }
-
-    var WebVsPhone7DaysLine = document.getElementById("LineWebVsPhone7Days").getContext("2d");
-    var WebVsPhone7DaysDynamicLineNew = new Chart(WebVsPhone7DaysLine).Line(WebVsPhone7DaysDynamicDataWithLabels);
+    
+    
 
 
     
@@ -96,33 +150,30 @@
     
 
     //Need Data - TurnOver vs Margin
-    var TurnoverVsMarginExVat7DaysCount = 2;
-    var TurnoverVsMarginExVat7DaysDynamicData = [];
-    for (var l = 0; l < TurnoverVsMarginExVat7DaysCount;) {
-        TurnoverVsMarginExVat7DaysDynamicData[l] =
-            {
-                label: "Dataset " + (l + 1).toString(),
-                fillColor: RGBColourList[l],
-                strokeColor: ColourList[l],
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: ColourList[l],
-                pointHighlightFill: ColourList[l],
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100)]
-            }
-        l++;
-    }
+    //var TurnoverVsMarginExVat7DaysCount = 2;
+    //var TurnoverVsMarginExVat7DaysDynamicData = [];
+    //for (var l = 0; l < TurnoverVsMarginExVat7DaysCount;) {
+    //    TurnoverVsMarginExVat7DaysDynamicData[l] =
+    //        {
+    //            label: "Dataset " + (l + 1).toString(),
+    //            fillColor: RGBColourList[l],
+    //            strokeColor: ColourList[l],
+    //            pointColor: "rgba(220,220,220,1)",
+    //            pointStrokeColor: ColourList[l],
+    //            pointHighlightFill: ColourList[l],
+    //            pointHighlightStroke: "rgba(220,220,220,1)",
+    //            data: [Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100)]
+    //        }
+    //    l++;
+    //}
 
 
-    var TurnoverVsMarginExVat7DaysDynamicDataWithLabels = {
-        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-        datasets: TurnoverVsMarginExVat7DaysDynamicData
-    }
+    //var TurnoverVsMarginExVat7DaysDynamicDataWithLabels = {
+    //    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    //    datasets: TurnoverVsMarginExVat7DaysDynamicData
+    //}
 
-    var TurnoverVsMarginExVat7DaysLine = document.getElementById("BarTurnoverVsMarginExVat7Days").getContext("2d");
-    varTurnoverVsMarginExVat7DaysDynamicLineNew = new Chart(TurnoverVsMarginExVat7DaysLine).Bar(TurnoverVsMarginExVat7DaysDynamicDataWithLabels);
+    //var TurnoverVsMarginExVat7DaysLine = document.getElementById("BarTurnoverVsMarginExVat7Days").getContext("2d");
+    //varTurnoverVsMarginExVat7DaysDynamicLineNew = new Chart(TurnoverVsMarginExVat7DaysLine).Bar(TurnoverVsMarginExVat7DaysDynamicDataWithLabels);
 };
 
-function GeneratePieChartData() {
-    
-};

@@ -4,50 +4,52 @@
 
 <h2>Overview</h2>
 
-@* Controller - No Data *@
+
 <div class="ChartDiv">
     <h4>Web Vs Phone Orders</h4>
     <canvas id="PieWebVsPhone" width="200" height="200"></canvas>
     <div id="PieWebVsPhoneLegend" class="chart-legend"></div>
 </div>
-@* Controller - No Data *@
 <div class="ChartDiv">
     <h4>Web Vs Phone Orders over the last 7 Days</h4>
-    <canvas id="LineWebVsPhone7Days" width="400" height="250"></canvas></br>
+    <canvas id="PieWebVsPhone7Days" width="200" height="200"></canvas>
+    <div id="PieWebVsPhone7DaysLegend" class="chart-legend"></div>
 </div>
-@* Controller - No Data *@
+
 <div class="ChartDiv">
     <h4>Standard Customers Vs Freedom Members</h4>
     <canvas id="PieCustomerNormalVsFreedom" width="200" height="200"></canvas>
     <div id="PieCustomerNormalVsFreedomLegend" class="chart-legend"></div>
 </div>
-@* Controller - No Data *@
+
 <div class="ChartDiv">
     <h4>New customers Vs Existing Customers</h4>
     <canvas id="PieCustomersNewVsExisting" width="200" height="200"></canvas>
     <div id="PieCustomersNewVsExistingLegend" class="chart-legend"></div>
 </div>
 @* Controller - No Data *@
-<div class="ChartDiv">
+@*<div class="ChartDiv">
     <h4>Tirn Over Vs Margin Ex Vat</h4>
     <canvas id="BarTurnoverVsMarginExVat7Days" width="400" height="250"></canvas>
     <div id="TurnoverVsMarginExVat7DaysLegend" class="chart-legend"></div>
-</div>
+</div>*@
 
 @*<div class="ChartDiv">
     <canvas id="BarTurnoverVsMarginExVat6Months" width="200" height="200"></canvas>
     <div id="=*****legend" class="chart-legend"></div>
-</div>
-
-<div class="ChartDiv">
-    <canvas id="PieNumberOfEachPostageType" width="200" height="200"></canvas>
-    <div id="*****legend" class="chart-legend"></div>
-</div>
-
-<div class="ChartDiv">
-    <canvas id="PieNumberOfEachPostageType" width="200" height="200"></canvas>
-    <div id="*****Legend" class="chart-legend"></div>
 </div>*@
+
+<div class="ChartDiv">
+    <h4>Number Of Each Postage Type</h4>
+    <canvas id="PieNumberOfEachPostageType" width="200" height="200"></canvas>
+    <div id="NumberOfEachPostageTypelegend" class="chart-legend"></div>
+</div>
+
+<div class="ChartDiv">
+    <h4>Number Of Each Postage Type 7 Days</h4>
+    <canvas id="PieNumberOfEachPostageType7Days" width="200" height="200"></canvas>
+    <div id="NumberOfEachPostageType7DaysLegend" class="chart-legend"></div>
+</div>
 
     @section scripts {
         @Scripts.Render("~/Scripts/Chart.js")
