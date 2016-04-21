@@ -383,9 +383,9 @@ input.button {
     }
 
     .CenteredDiv select {
-        width: 33%;
+        width: 100%;
         max-width: 33%;
-        float: left;
+        margin:0 auto;
     }
 
     .generateButton {
@@ -411,6 +411,33 @@ input.button {
 .Bold {
     font-weight:bold;
 }
+
+/*radio buttons style*/
+
+.radio_btn_position {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: large;
+    color: #fff;
+    font-weight: bold;
+    background-color: #ed137d;
+    max-width: 300px;
+    margin: 0 auto;
+    padding:10px
+}
+
+div#SelectionDiv {
+    margin: 0 auto;
+    width: 80%;
+    min-width: 300px;
+    max-width: 800px;
+    margin-bottom: 20px;
+    margin-top:20px;
+    text-align:center;
+
+}
+
+/*radio buttons style End*/
 
 /*Monitoring Start*/
 #MainMonitoringDiv {
@@ -717,6 +744,20 @@ input.button {
 
     /* ########### :END: DASHBOARD ########### */
 
+    #startDate {
+    width: 48%;
+    height: 20%;
+    margin-bottom: 5%;
+    font-size: 25px;
+}
+
+    .dateInput {
+    width: 48%;
+    height: 20%;
+    margin-bottom: 5%;
+    font-size: 25px;
+}
+
 
 @media (min-width: 520px) {
 
@@ -743,8 +784,12 @@ input.button {
     margin-bottom: 30px;
 }
     div#DateDiv {
-    margin-bottom: 50px;
+    margin: 0 auto;
+    width: 80%;
+    min-width: 300px;
+    max-width: 800px;
 }
+
 
     /* ########### :END: DASHBOARD ########### */
 }
