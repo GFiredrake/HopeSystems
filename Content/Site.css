@@ -77,6 +77,15 @@ table {
     overflow: auto;   /* Scrollbar is displayed as it's needed */
 }
 
+.clear:after {
+	visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {
@@ -141,7 +150,7 @@ div#buttonDiv a {
 }
 
 div#MenuDiv a:hover {
-    background-color: #A01D5D;
+    /*background-color: #A01D5D;*/
 }
 
 #BannerDiv {
@@ -577,6 +586,80 @@ input.button {
 
 /*confirmation end*/
 
+/*------- responsive tables -------*/
+
+#table-scroll {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+}
+
+    p.swipe_text {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform:uppercase;
+}
+
+ #swipe_text_wrap {
+    width: 100%;
+}
+
+/*------- responsive tables end* -------*/
+
+/*------- PinBox style -------*/
+
+#PinBox {
+        width: 100%;
+    background-color: #f9f9f9;
+    height: 40px;
+    margin-bottom: 8px;
+    font: 14px Tahoma, Geneva, sans-serif;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    text-indent: 5px;
+    padding: 0;
+    line-height: 40px;
+}
+
+.HiddenDiv {
+    visibility: hidden;
+    display: none;
+}
+
+
+/*------- PinBox style  end* -------*/
+
+
+/*------- RWD Bootstrap show / hide -------*/
+
+.show-phone {
+    display: block!important;
+}
+.show-tablet {
+    display: none!important;
+}
+.show-desktop {
+    display: none!important;
+}
+
+
+.hide-phone {
+    display: none!important;
+}
+.hide-tablet {
+    display: block!important;
+}
+.hide-desktop {
+    display: block!important;
+}
+
+/*------- :END: RWD Bootstrap show / hide -------*/
+
 
 /* ########### DASHBOARD ########### */
 
@@ -614,6 +697,27 @@ input.button {
 /* ########### :END: DASHBOARD ########### */
 
 
+
+
+    /* ########### DASHBOARD ########### */
+
+    .BoxDiv {
+        height: 110px;
+    }
+
+    .BoxDiv .Bold {
+        min-height: 50px;
+    }
+
+    #buttonDiv {
+    width: 100%;
+    background: #ed137d;
+    }
+
+
+    /* ########### :END: DASHBOARD ########### */
+
+
 @media (min-width: 520px) {
 
     /* ########### DASHBOARD ########### */
@@ -626,11 +730,51 @@ input.button {
         min-height: 50px;
     }
 
+    #buttonDiv {
+    width: 100%;
+    background: #ed137d;
+    }
+
+    .generateButton {
+    width: 30%;
+    /* max-width: 335px; */
+    margin: 0;
+    margin-left: 3%;
+    margin-bottom: 30px;
+}
+    div#DateDiv {
+    margin-bottom: 50px;
+}
+
     /* ########### :END: DASHBOARD ########### */
 }
 
 
 @media (min-width: 760px) {
+    /*------- RWD Bootstrap show / hide -------*/
+
+    .show-phone {
+        display: none!important;
+    }
+    .show-tablet {
+        display: block!important;
+    }
+    .show-desktop {
+        display: none!important;
+    }
+
+
+    .hide-phone {
+        display: block!important;
+    }
+    .hide-tablet {
+        display: none!important;
+    }
+    .hide-desktop {
+        display: block!important;
+    }
+
+    /*------- :END: RWD Bootstrap show / hide -------*/
 
     /* ########### DASHBOARD ########### */
 
@@ -645,6 +789,11 @@ input.button {
         height: 184px;
     }
 
+        #buttonDiv {
+    width: 100%;
+    background: #ed137d;
+    }
+
     /* ########### :END: DASHBOARD ########### */
 
 }
@@ -652,6 +801,30 @@ input.button {
 
 
 @media (min-width: 960px) {
+    /*------- RWD Bootstrap show / hide -------*/
+
+    .show-phone {
+        display: none!important
+    }
+    .show-tablet {
+        display: none!important;
+    }
+    .show-desktop {
+        display: block!important;
+    }
+
+
+    .hide-phone {
+        display: block!important;
+    }
+    .hide-tablet {
+        display: block!important;
+    }
+    .hide-desktop {
+        display: none!important;
+    }
+
+    /*------- :END: RWD Bootstrap show / hide -------*/
 
     /* ########### DASHBOARD ########### */
 
@@ -664,6 +837,8 @@ input.button {
         height: 160px;
         font-size: 1em;
     }
+
+
 
     /* ########### :END: DASHBOARD ########### */
     
@@ -698,18 +873,4 @@ input.button {
 #ProducerNotes, #DirectorNotes, #FloorNotes, #ForwardNotes {
     min-height: 500px!important;
     min-width: 800px!important;
-}
-
-
-/* Charts */
-.chart-legend li span{
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
-}
-
-.ChartDiv {
-    float: left;
-    margin-right: 25px;
 }
