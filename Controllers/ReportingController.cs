@@ -1297,5 +1297,124 @@ namespace InternalWebSystems.Controllers
 
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+
+        //Product Rules Report
+        public ActionResult ProductRulesReport()
+        {
+            //Repetitition need to find a way to extract
+            #region Repeated Page validation and navigation controll
+            bool MyCookie = IsCookiePresentAndSessionValid("HIWSSettings");
+            ViewBag.TodaysDate = DateTime.Today.ToString("yyyy-MM-dd");
+            if (MyCookie == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            HttpCookie aCookie = Request.Cookies["HIWSSettings"];
+            List<string> somelist = new LogOnController().GenerateMenuForSession(aCookie["SessionGui"]);
+            if (somelist != null)
+            {
+                StringBuilder astring = new StringBuilder();
+                foreach (string buttonString in somelist)
+                {
+                    astring.Append(buttonString);
+                }
+
+                ViewBag.MenuHtml = astring.ToString();
+            }
+            #endregion
+            //End Repetition 
+
+            return View();
+        }
+        public JsonResult GenerateProductRulesReport(string Days)
+        {
+
+            List<ProductRulesModel> obj = new List<ProductRulesModel>();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GenerateProductRulesReport"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Days", Days);
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ProductRulesModel Result = new ProductRulesModel();
+                        Result.Sku = myReader["SKU"].ToString();
+                        Result.Description = myReader["Desctiption"].ToString();
+                        Result.Rule = myReader["ItemRule"].ToString();
+                        Result.Date = myReader["ActionDate"].ToString();
+                        Result.PastOrFuture = myReader["PastOrFuture"].ToString();
+
+                        obj.Add(Result);
+                    }
+                    connection.Close();
+                }
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        //Stock Expiery Report
+        public ActionResult StockExpieryReport()
+        {
+            //Repetitition need to find a way to extract
+            #region Repeated Page validation and navigation controll
+            bool MyCookie = IsCookiePresentAndSessionValid("HIWSSettings");
+            ViewBag.TodaysDate = DateTime.Today.ToString("yyyy-MM-dd");
+            if (MyCookie == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            HttpCookie aCookie = Request.Cookies["HIWSSettings"];
+            List<string> somelist = new LogOnController().GenerateMenuForSession(aCookie["SessionGui"]);
+            if (somelist != null)
+            {
+                StringBuilder astring = new StringBuilder();
+                foreach (string buttonString in somelist)
+                {
+                    astring.Append(buttonString);
+                }
+
+                ViewBag.MenuHtml = astring.ToString();
+            }
+            #endregion
+            //End Repetition 
+
+            return View();
+        }
+        public JsonResult GenerateStockExpieryReport(string Days)
+        {
+
+            List<StockExpieryReportsModel> obj = new List<StockExpieryReportsModel>();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GenerateStockExpieryReport"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Days", Days);
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        StockExpieryReportsModel Result = new StockExpieryReportsModel();
+                        Result.Sku = myReader["SKU"].ToString();
+                        Result.Description = myReader["Desctiption"].ToString();
+                        Result.Date = myReader["HeldTillDate"].ToString();
+                        Result.PastOrFuture = myReader["PastOrFuture"].ToString();
+
+                        obj.Add(Result);
+                    }
+                    connection.Close();
+                }
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -163,6 +163,8 @@
     <Compile Include="Controllers\CMSController.cs" />
     <Compile Include="Controllers\CustomerServiceController.cs" />
     <Compile Include="Controllers\OverviewController.cs" />
+    <Compile Include="Models\StockExpieryReportModel.cs" />
+    <Compile Include="Models\ProductRulesModel.cs" />
     <Compile Include="Models\DashboardBaseModel.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -211,6 +213,8 @@
     <Content Include="Content\Scripts\MonitoringMain.js" />
     <Content Include="Content\Scripts\Overview.js" />
     <Content Include="Content\Scripts\pol.js" />
+    <Content Include="Content\Scripts\StockExpieryReport.js" />
+    <Content Include="Content\Scripts\ProductRulesReport.js" />
     <Content Include="Content\Scripts\resend.js" />
     <Content Include="Content\Scripts\SalesOverview.js" />
     <Content Include="Content\Scripts\FlexiPayReport.js" />
@@ -361,6 +365,8 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\PinEntry.cshtml" />
     <Content Include="Views\Overview\Index.cshtml" />
+    <Content Include="Views\Reporting\ProductRulesReport.cshtml" />
+    <Content Include="Views\Reporting\StockExpieryReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

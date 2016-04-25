@@ -13,9 +13,6 @@ namespace InternalWebSystems.Controllers
 {
     public class OverviewController : Controller
     {
-        //
-        // GET: /Overview/
-
         public ActionResult Index()
         {
             //Repetitition need to find a way to extract
@@ -45,7 +42,6 @@ namespace InternalWebSystems.Controllers
             //End Repetition 
             return View();
         }
-
         private bool IsCookiePresentAndSessionValid(string cookieName)
         {
             HttpCookieCollection MyCookieCollection = Request.Cookies;
@@ -58,7 +54,6 @@ namespace InternalWebSystems.Controllers
 
             return new LogOnController().CheckSessionGuidIsValid(MyCookie["SessionGui"]);
         }
-
         public JsonResult GetPieChartData()
         {
 
@@ -92,7 +87,6 @@ namespace InternalWebSystems.Controllers
 
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetPieChartDataComplex()
         {
             List<List<ReportVariables>> biglist = new List<List<ReportVariables>>();
@@ -144,6 +138,36 @@ namespace InternalWebSystems.Controllers
             biglist.Add(obj2);
 
             return Json(biglist, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetBarChartData()
+        {
+
+            List<ReportVariables> list = new List<ReportVariables>();
+
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Overview_GenerateMarginChartData"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ReportVariables newItem = new ReportVariables();
+                        newItem.Variable1 = myReader["startdate"].ToString();
+                        newItem.Variable2 = myReader["turnoverexvat"].ToString();
+                        newItem.Variable3 = myReader["marginexvat"].ToString();
+                        list.Add(newItem);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -931,3 +931,7 @@ div#SelectionDiv {
     float: left;
     margin-right: 25px;
 }
+
+.thisthing {
+    color: blue;
+}
