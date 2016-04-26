@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "ProductRulesReport";
+}
+
+<h2>Product Rules Report</h2>
+<br />
+<br />
+<select id="DaysSelect">
+    <option value="1">1</option>
+    <option value="3">3</option>
+    <option value="7">7</option>
+    <option value="14">14</option>
+</select>
+<br />
+<br />
+<button class="generateButton" id="GenerateButton" onclick="getInfo()">Generate Report</button>
+<br />
+<br />
+<div id="TableArea">
+    <br />
+    <br />
+    <h3>Past Rules</h3>
+    <table id="DisplayTable1"></table>
+    <br />
+    <br />
+    <h3>Future Rules</h3>
+    <table id="DisplayTable2"></table>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/ProductRulesReport.js")
+}
