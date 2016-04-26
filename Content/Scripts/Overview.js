@@ -15,8 +15,8 @@
         //Web orders Vs Phone Orders
         var total1 = parseInt(data[0]) + parseInt(data[1]); 
         var WebVsPhoneDynamicData = [];
-        WebVsPhoneDynamicData[0] = { value: data[0], color: ColourList[0], highlight: HighLightList[0], label: "Web Orders - " + ((parseInt(data[0]) / total1) * 100).toString().substring(0, 5) + '%' }
-        WebVsPhoneDynamicData[1] = { value: data[1], color: ColourList[1], highlight: HighLightList[1], label: "Phone Orders - " + ((parseInt(data[1]) / total1) * 100).toString().substring(0, 5) + '%' }
+        WebVsPhoneDynamicData[0] = { value: data[0], color: ColourList[0], highlight: HighLightList[0], label: "Web Orders - " + Math.round(((parseInt(data[0]) / total1) * 100) * 10) / 10 + '%' }
+        WebVsPhoneDynamicData[1] = { value: data[1], color: ColourList[1], highlight: HighLightList[1], label: "Phone Orders - " + Math.round(((parseInt(data[1]) / total1) * 100) * 10) / 10 + '%' }
 
         var WebVsPhoneOptions = {
             segmentShowStroke: false,
@@ -30,8 +30,8 @@
         //Customers Normal Vs Freedom
         var total2 = parseInt(data[4]) + parseInt(data[5]);
         var CustomerNormalVsFreedomDynamicData = [];
-        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[0], highlight: HighLightList[0], label: "Freedom Customers - " + ((parseInt(data[4]) / total2) * 100).toString().substring(0, 5) + '%' }
-        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[1], highlight: HighLightList[1], label: "Non Freedom Customer - " + ((parseInt(data[5]) / total2) * 100).toString().substring(0, 5) + '%' }
+        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[1], highlight: HighLightList[0], label: "Freedom Customers - " + Math.round(((parseInt(data[4]) / total2) * 100) * 10) / 10 + '%' }
+        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[0], highlight: HighLightList[1], label: "Non Freedom Customer - " + Math.round(((parseInt(data[5]) / total2) * 100) * 10) / 10 + '%' }
 
         var CustomerNormalVsFreedomOptions = {
             segmentShowStroke: false,
@@ -45,8 +45,8 @@
         //Need Data - Customers Existing Vs New
         var total3 = parseInt(data[2]) + parseInt(data[3]);
         var CustomersNewVsExistingDynamicData = [];
-        CustomersNewVsExistingDynamicData[0] = { value: data[2], color: ColourList[0], highlight: HighLightList[0], label: "New Customers - " + ((parseInt(data[2]) / total3) * 100).toString().substring(0, 5) + '%' }
-        CustomersNewVsExistingDynamicData[1] = { value: data[3], color: ColourList[1], highlight: HighLightList[1], label: "Existing Customers - " + ((parseInt(data[3]) / total3) * 100).toString().substring(0, 5) + '%' }
+        CustomersNewVsExistingDynamicData[0] = { value: data[3], color: ColourList[1], highlight: HighLightList[1], label: "Existing - " + Math.round(((parseInt(data[3]) / total3) * 100) * 10) / 10 + '%' }
+        CustomersNewVsExistingDynamicData[1] = { value: data[2], color: ColourList[0], highlight: HighLightList[0], label: "New - " + Math.round(((parseInt(data[2]) / total3) * 100) * 10) / 10 + '%' }
 
         var CustomersNewVsExistingOptions = {
             segmentShowStroke: false,
@@ -61,8 +61,8 @@
         var total4 = parseInt(data[6]) + parseInt(data[7]);
         var WebVsPhone7DaysCount = 2;
         var WebVsPhone7DaysDynamicData = [];
-        WebVsPhone7DaysDynamicData[0] = { value: data[6], color: ColourList[0], highlight: HighLightList[0], label: "Web Orders - " + ((parseInt(data[6]) / total4) * 100).toString().substring(0, 5) + '%' }
-        WebVsPhone7DaysDynamicData[1] = { value: data[7], color: ColourList[1], highlight: HighLightList[1], label: "Phone Orders - " + ((parseInt(data[7]) / total4) * 100).toString().substring(0, 5) + '%' }
+        WebVsPhone7DaysDynamicData[0] = { value: data[6], color: ColourList[0], highlight: HighLightList[0], label: "Web Orders - " + Math.round(((parseInt(data[6]) / total4) * 100) * 10) / 10 + '%' }
+        WebVsPhone7DaysDynamicData[1] = { value: data[7], color: ColourList[1], highlight: HighLightList[1], label: "Phone Orders - " + Math.round(((parseInt(data[7]) / total4) * 100) * 10) / 10 + '%' }
 
         var WebVsPhone7DaysOptions = {
             segmentShowStroke: false,
@@ -105,7 +105,7 @@
                     value: one[j].Variable1.toString(),
                     color: ColourList[j],
                     highlight: HighLightList[j],
-                    label: one[j].Variable2.toString() + ' -' + ((parseInt(one[j].Variable1) / total5) * 100).toString().substring(0, 5) + '%'
+                    label: one[j].Variable2.toString() + ' -' + Math.round(((parseInt(one[j].Variable1) / total5) * 100) * 10) / 10 + '%'
                 }
             j++;
         }
@@ -134,7 +134,7 @@
                 {
                     value: two[j].Variable1.toString(),
                     color: ColourList[j],
-                    label: two[j].Variable2.toString() + ' -' + ((parseInt(two[j].Variable1) / total6) * 100).toString().substring(0, 5) + '%'
+                    label: two[j].Variable2.toString() + ' -' + Math.round(((parseInt(two[j].Variable1) / total6) * 100) * 10) / 10 + '%'
                 }
             j++;
         }
@@ -194,14 +194,59 @@
         }
 
         var TurnoverVsMarginExVat7DaysLine = document.getElementById("BarTurnoverVsMarginExVat7Days").getContext("2d");
-        varTurnoverVsMarginExVat7DaysDynamicLineNew = new Chart(TurnoverVsMarginExVat7DaysLine).Bar(TurnoverVsMarginExVat7DaysDynamicDataWithLabels);
+        var TurnoverVsMarginExVat7DaysDynamicLineNew = new Chart(TurnoverVsMarginExVat7DaysLine).Bar(TurnoverVsMarginExVat7DaysDynamicDataWithLabels);
 
     })
     .fail(function (xhr, status, error) {
 
     });
     
-    
+    $.ajax({
+        type: "Get",
+        url: "/Overview/GetBarChartData6month",
+        data: {},
+        dataType: "json"
+    })
+    .done(function (data) {
+        var pause = 1;
+        //Need Data - TurnOver vs Margin
+        var TurnoverVsMarginExVat6MonthsDynamicData = [];
+        TurnoverVsMarginExVat6MonthsDynamicData[0] =
+                {
+                    label: "turnoverexvat",
+                    fillColor: RGBColourList[0],
+                    strokeColor: ColourList[0],
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: ColourList[0],
+                    pointHighlightFill: ColourList[0],
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [data[0].Variable2.toString(), data[1].Variable2.toString(), data[2].Variable2.toString(), data[3].Variable2.toString(), data[4].Variable2.toString(), data[5].Variable2.toString(), data[6].Variable2.toString()]
+                }
+        TurnoverVsMarginExVat6MonthsDynamicData[1] =
+                {
+                    label: "marginexvat",
+                    fillColor: RGBColourList[1],
+                    strokeColor: ColourList[1],
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: ColourList[1],
+                    pointHighlightFill: ColourList[1],
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [data[0].Variable3.toString(), data[1].Variable3.toString(), data[2].Variable3.toString(), data[3].Variable3.toString(), data[4].Variable3.toString(), data[5].Variable3.toString(), data[6].Variable3.toString()]
+                }
+
+
+        var TurnoverVsMarginExVat6MonthsDataWithLabels = {
+            labels: [data[0].Variable1.toString().split(' ')[0], data[1].Variable1.toString().split(' ')[0], data[2].Variable1.toString().split(' ')[0], data[3].Variable1.toString().split(' ')[0], data[4].Variable1.toString().split(' ')[0], data[5].Variable1.toString().split(' ')[0], data[6].Variable1.toString().split(' ')[0]],
+            datasets: TurnoverVsMarginExVat6MonthsDynamicData
+        }
+
+        var TurnoverVsMarginExVat6MonthsLine = document.getElementById("BarTurnoverVsMarginExVat6Months").getContext("2d");
+        var TurnoverVsMarginExVat6MonthsDynamicLineNew = new Chart(TurnoverVsMarginExVat6MonthsLine).Bar(TurnoverVsMarginExVat6MonthsDataWithLabels);
+
+    })
+    .fail(function (xhr, status, error) {
+
+    });
 
 
     

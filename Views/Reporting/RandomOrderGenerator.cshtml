@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "RandomOrderGenerator";
+}
+
+<h2>Random Order Generator</h2>
+
+Start<br />
+<input id="StartDate" type="date" name="Start">
+<select id="StartTime">
+    <option value="99">Select One...</option>
+    <option value="00">12am</option>
+    <option value="01">1am</option>
+    <option value="02">2am</option>
+    <option value="03">3am</option>
+    <option value="04">4am</option>
+    <option value="05">5am</option>
+    <option value="06">6am</option>
+    <option value="07">7am</option>
+    <option value="08">8am</option>
+    <option value="09">9am</option>
+    <option value="10">10am</option>
+    <option value="11">11am</option>
+    <option value="12">12pm</option>
+    <option value="13">1pm</option>
+    <option value="14">2pm</option>
+    <option value="15">3pm</option>
+    <option value="16">4pm</option>
+    <option value="17">5pm</option>
+    <option value="18">6pm</option>
+    <option value="19">7pm</option>
+    <option value="20">8pm</option>
+    <option value="21">9pm</option>
+    <option value="22">10pm</option>
+    <option value="23">11pm</option>
+</select><br />
+
+End<br />
+<input id="EndDate" type="date" name="End">
+<select id="EndTime">
+    <option value="99">Select One...</option>
+    <option value="00">12am</option>
+    <option value="01">1am</option>
+    <option value="02">2am</option>
+    <option value="03">3am</option>
+    <option value="04">4am</option>
+    <option value="05">5am</option>
+    <option value="06">6am</option>
+    <option value="07">7am</option>
+    <option value="08">8am</option>
+    <option value="09">9am</option>
+    <option value="10">10am</option>
+    <option value="11">11am</option>
+    <option value="12">12pm</option>
+    <option value="13">1pm</option>
+    <option value="14">2pm</option>
+    <option value="15">3pm</option>
+    <option value="16">4pm</option>
+    <option value="17">5pm</option>
+    <option value="18">6pm</option>
+    <option value="19">7pm</option>
+    <option value="20">8pm</option>
+    <option value="21">9pm</option>
+    <option value="22">10pm</option>
+    <option value="23">11pm</option>
+</select> <br />
+
+<br />
+<input type="radio" name="Condition" id="Condition1" value="1" checked> Any order between above dates<br>
+<input type="radio" name="Condition" id="Condition2" value="2"> Any order containing above SKU<br>
+<input type="radio" name="Condition" id="Condition3" value="3"> Any Order with item from specific show<br>
+<br>
+SKU: 
+<input type="number" name="skuInput" id="SkuInput" max="999999"><br>
+<br>
+<button class="generateButton" id="GenerateButton" onclick="GenerateRandomOrder()">Generate Report</button>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/RandomOrderGeneration.js")
+}
