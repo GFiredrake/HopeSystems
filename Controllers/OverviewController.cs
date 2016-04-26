@@ -169,5 +169,36 @@ namespace InternalWebSystems.Controllers
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetBarChartData6month()
+        {
+
+            List<ReportVariables> list = new List<ReportVariables>();
+
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Overview_GenerateMarginChartData6Month"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ReportVariables newItem = new ReportVariables();
+                        newItem.Variable1 = myReader["startdate"].ToString();
+                        newItem.Variable2 = myReader["turnoverexvat"].ToString();
+                        newItem.Variable3 = myReader["marginexvat"].ToString();
+                        list.Add(newItem);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -213,6 +213,7 @@
     <Content Include="Content\Scripts\MonitoringMain.js" />
     <Content Include="Content\Scripts\Overview.js" />
     <Content Include="Content\Scripts\pol.js" />
+    <Content Include="Content\Scripts\RandomOrderGeneration.js" />
     <Content Include="Content\Scripts\StockExpieryReport.js" />
     <Content Include="Content\Scripts\ProductRulesReport.js" />
     <Content Include="Content\Scripts\resend.js" />
@@ -367,6 +368,7 @@
     <Content Include="Views\Overview\Index.cshtml" />
     <Content Include="Views\Reporting\ProductRulesReport.cshtml" />
     <Content Include="Views\Reporting\StockExpieryReport.cshtml" />
+    <Content Include="Views\Reporting\RandomOrderGenerator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
