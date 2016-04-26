@@ -342,10 +342,6 @@ input.button {
     -moz-appearance: none;
 }
 
-.CenteredDiv select {
-    width: 100%;
-}
-
 
 .generateButton {
     -webkit-border-radius: 2px;
@@ -387,6 +383,19 @@ input.button {
         max-width: 33%;
         margin:0 auto;
     }
+
+   .Datediv_flexibuyreport {
+       margin: 0 auto;
+       text-align: center;
+    }
+
+   #YearsAvailable, #MonthsAvailable {
+    width: 48%;
+    margin: 1px 4px 1px 1px;
+    height: 27px;
+    font-size: 18px;
+    /* float: left; */
+}
 
     .generateButton {
         width: 32%;
@@ -930,4 +939,8 @@ div#SelectionDiv {
 .ChartDiv {
     float: left;
     margin-right: 25px;
+}
+
+.thisthing {
+    color: blue;
 }
