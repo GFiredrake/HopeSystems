@@ -2,9 +2,10 @@
     ViewBag.Title = "StockExpieryReport";
 }
 
-<h2>Stock Expiery Report</h2>
+<h2>Stock Expiry Report</h2>
 <br />
 <br />
+Day Range:
 <select id="DaysSelect">
     <option value="1">1</option>
     <option value="3">3</option>
@@ -16,7 +17,7 @@
 <button class="generateButton" id="GenerateButton" onclick="getInfo()">Generate Report</button>
 <br />
 <br />
-<div id="TableArea">
+<div id="TableArea" class="HiddenDiv">
     <br />
     <br />
     <h3>Past Expired Stock</h3>

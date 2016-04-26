@@ -1,4 +1,5 @@
 ﻿function getInfo() {
+    $('#TableArea').removeClass('HiddenDiv');
     $('#DisplayTable1').empty();
     $('#DisplayTable2').empty();
 
