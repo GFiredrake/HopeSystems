@@ -6,8 +6,8 @@
     }
 }
 <h1 class="centeredText">Flexi Buy Report</h1>
-<div class="CenteredDiv">
-    <div id="DateDiv">
+<h4 class="centeredText">Please select a Year &amp; Month</h4>
+<div class="Datediv_flexibuyreport">
         @Html.DropDownList("YearsAvailable")
         <select name="MonthsAvailable" id="MonthsAvailable" onchange="" size="1">
             <option value="00">...</option>
@@ -32,21 +32,28 @@
             <option class="InvisibleDiv" value="7">July</option>
             <option class="InvisibleDiv" value="8">August</option>
         </select>
-    </div>
-    <button class="generateButton" id="GenerateButton" onclick="GenerateFlexiPayReportReport()">Generate Report</button>
+</div>
+
+<div style="clear: both;"></div>
+
+<div id="flexibuyreport_buttons_position">
+    <button class="generateButton generateButton_flexipay" id="GenerateButton" onclick="GenerateFlexiPayReportReport()">Generate Report</button>
     <a id="dlink" style="display:none;"></a>
     <div class="" id="ExportDiv">
-        <input class="generateButton" type="button" onclick="tableToExcel('DisplayTable', 'Flexi Buy Report', '.xls')" value="Export to Excel">
+        <input class="generateButton generateButton_flexipay" type="button" onclick="tableToExcel('DisplayTable', 'Flexi Buy Report', '.xls')" value="Export to Excel">
     </div>
     <div class="InvisibleDiv errorDiv" id="ErrorDiv">
         Please compleate required information
     </div>
-    
+
     <div class="InvisibleDiv" id="LoadingDiv">
         <img src="~/Content/Images/ajax-loader.gif" />
     </div>
+</div><!-- flexibuyreport_buttons_position -->
 
-</div>
+
+<div style="clear: both;"></div>
+
 <div id="TableArea">
     <div id="swipe_text_wrap">
         <p class="swipe_text hide-desktop">&#8592;&nbsp;swipe to view full table&nbsp;&#8594;</p>
