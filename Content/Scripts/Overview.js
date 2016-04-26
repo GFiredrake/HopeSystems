@@ -30,8 +30,8 @@
         //Customers Normal Vs Freedom
         var total2 = parseInt(data[4]) + parseInt(data[5]);
         var CustomerNormalVsFreedomDynamicData = [];
-        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[0], highlight: HighLightList[0], label: "Freedom Customers - " + ((parseInt(data[4]) / total2) * 100).toString().substring(0, 5) + '%' }
-        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[1], highlight: HighLightList[1], label: "Non Freedom Customer - " + ((parseInt(data[5]) / total2) * 100).toString().substring(0, 5) + '%' }
+        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[1], highlight: HighLightList[0], label: "Freedom Customers - " + ((parseInt(data[4]) / total2) * 100).toString().substring(0, 5) + '%' }
+        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[0], highlight: HighLightList[1], label: "Non Freedom Customer - " + ((parseInt(data[5]) / total2) * 100).toString().substring(0, 5) + '%' }
 
         var CustomerNormalVsFreedomOptions = {
             segmentShowStroke: false,
@@ -45,8 +45,8 @@
         //Need Data - Customers Existing Vs New
         var total3 = parseInt(data[2]) + parseInt(data[3]);
         var CustomersNewVsExistingDynamicData = [];
-        CustomersNewVsExistingDynamicData[0] = { value: data[2], color: ColourList[0], highlight: HighLightList[0], label: "New Customers - " + ((parseInt(data[2]) / total3) * 100).toString().substring(0, 5) + '%' }
-        CustomersNewVsExistingDynamicData[1] = { value: data[3], color: ColourList[1], highlight: HighLightList[1], label: "Existing Customers - " + ((parseInt(data[3]) / total3) * 100).toString().substring(0, 5) + '%' }
+        CustomersNewVsExistingDynamicData[0] = { value: data[3], color: ColourList[1], highlight: HighLightList[1], label: "Existing - " + ((parseInt(data[3]) / total3) * 100).toString().substring(0, 5) + '%' }
+        CustomersNewVsExistingDynamicData[1] = { value: data[2], color: ColourList[0], highlight: HighLightList[0], label: "New - " + ((parseInt(data[2]) / total3) * 100).toString().substring(0, 5) + '%' }
 
         var CustomersNewVsExistingOptions = {
             segmentShowStroke: false,
