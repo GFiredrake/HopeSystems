@@ -409,7 +409,7 @@ namespace InternalWebSystems.Controllers
             
 
             List<SelectListItem> Years = new List<SelectListItem>();
-            Years.Add(new SelectListItem { Text = "...", Value = "0" });
+            Years.Add(new SelectListItem { Text = "...Select Year", Value = "0" });
             foreach (int year in yearsList)
             {
                 Years.Add(new SelectListItem { Text = year.ToString(), Value = year.ToString() });
