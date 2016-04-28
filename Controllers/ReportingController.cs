@@ -1446,9 +1446,44 @@ namespace InternalWebSystems.Controllers
 
             return View();
         }
-        public void GenerateRandomOrder(string StartDate, string StartTime, string EndDate, string EndTime, string Condition, string SKU)
+        public JsonResult GenerateRandomOrder(string StartDate, string StartTime, string EndDate, string EndTime, string Condition, string SKU)
         {
             var pause = 1;
+            var startDateTime = StartDate + ' ' + StartTime + ":00:00.000";
+            if (EndDate == "")
+            {
+                EndDate = "2015-01-01";
+            }
+            var endDateTime = EndDate + ' ' + EndTime + ":00:00.000";
+            ReportVariables obj = new ReportVariables();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_GenerateRandomOrder"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@StartDateTime", startDateTime);
+                    command.Parameters.AddWithValue("@EndDateTime", endDateTime);
+                    command.Parameters.AddWithValue("@Condition", Condition);
+                    command.Parameters.AddWithValue("@Sku", SKU);
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        obj.Variable1 = myReader["OrderId"].ToString();
+                        obj.Variable2 = myReader["customerid"].ToString();
+                        obj.Variable3 = myReader["title"].ToString();
+                        obj.Variable4 = myReader["firstname"].ToString();
+                        obj.Variable5 = myReader["lastname"].ToString();
+                        obj.Variable6 = myReader["emailaddress"].ToString();
+                        obj.Variable7 = myReader["phonenumber1"].ToString();
+
+                    }
+                    connection.Close();
+                }
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
     }
