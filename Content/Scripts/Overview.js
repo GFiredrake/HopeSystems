@@ -236,7 +236,13 @@
 
 
         var TurnoverVsMarginExVat6MonthsDataWithLabels = {
-            labels: [data[0].Variable1.toString().split(' ')[0], data[1].Variable1.toString().split(' ')[0], data[2].Variable1.toString().split(' ')[0], data[3].Variable1.toString().split(' ')[0], data[4].Variable1.toString().split(' ')[0], data[5].Variable1.toString().split(' ')[0], data[6].Variable1.toString().split(' ')[0]],
+            labels: [CreateMonth(data[0].Variable1.toString().split(' ')[0]),
+                     CreateMonth(data[1].Variable1.toString().split(' ')[0]),
+                     CreateMonth(data[2].Variable1.toString().split(' ')[0]),
+                     CreateMonth(data[3].Variable1.toString().split(' ')[0]),
+                     CreateMonth(data[4].Variable1.toString().split(' ')[0]),
+                     CreateMonth(data[5].Variable1.toString().split(' ')[0]), 
+                     CreateMonth(data[6].Variable1.toString().split(' ')[0])],
             datasets: TurnoverVsMarginExVat6MonthsDynamicData
         }
 
@@ -256,3 +262,15 @@
     
 };
 
+function CreateMonth(Date) {
+    var wMonths = ['nothing', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    var dateNumber = Date.split('/')[1];
+    if (dateNumber.charAt(0) == 0) {
+        dateNumber = dateNumber.substring(1);
+    }
+    var month = wMonths[dateNumber];
+   
+
+    
+    return month + ' ' + Date.split('/')[2];
+}
