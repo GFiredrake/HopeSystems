@@ -753,6 +753,8 @@ div#SelectionDiv {
 
     /* ########### :END: DASHBOARD ########### */
 
+    /* ########### FLEXIBUY REPORT ########### */
+
     #startDate {
     width: 47%;
     height: 20%;
@@ -770,6 +772,51 @@ div#SelectionDiv {
    #flexibuyreport_buttons_position {
     width:100%
    }
+
+    /* ########### :END: FLEXIBUY REPORT ########### */
+
+
+    /* ########### SALES OVERVIEW ########### */
+
+   .day_currency_select {
+    height: 50px;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 10px;
+    max-width: 600px;
+}
+
+   .salesoverview_btn {
+    height: 50px;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+   #CurrencyType{
+       margin-left:1%
+   }
+
+   .generateButton_salesoverview {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    line-height: 34px;
+    display: inline-block;
+    color: #fff;
+    background-color: #ed137d;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    padding: 0 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    float: left;
+    width: 100%;
+   }
+
+
+    /* ########### :END: SALES OVERVIEW ########### */
 
 
 @media (min-width: 520px) {
