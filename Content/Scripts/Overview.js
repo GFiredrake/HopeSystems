@@ -30,8 +30,8 @@
         //Customers Normal Vs Freedom
         var total2 = parseInt(data[4]) + parseInt(data[5]);
         var CustomerNormalVsFreedomDynamicData = [];
-        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[1], highlight: HighLightList[0], label: "Freedom Customers - " + Math.round(((parseInt(data[4]) / total2) * 100) * 10) / 10 + '%' }
-        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[0], highlight: HighLightList[1], label: "Non Freedom Customer - " + Math.round(((parseInt(data[5]) / total2) * 100) * 10) / 10 + '%' }
+        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[1], highlight: HighLightList[0], label: "Freedom - " + Math.round(((parseInt(data[4]) / total2) * 100) * 10) / 10 + '%' }
+        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[0], highlight: HighLightList[1], label: "Non Freedom - " + Math.round(((parseInt(data[5]) / total2) * 100) * 10) / 10 + '%' }
 
         var CustomerNormalVsFreedomOptions = {
             segmentShowStroke: false,
@@ -105,7 +105,7 @@
                     value: one[j].Variable1.toString(),
                     color: ColourList[j],
                     highlight: HighLightList[j],
-                    label: one[j].Variable2.toString() + ' -' + Math.round(((parseInt(one[j].Variable1) / total5) * 100) * 10) / 10 + '%'
+                    label: one[j].Variable2.toString() + ' - ' + Math.round(((parseInt(one[j].Variable1) / total5) * 100) * 10) / 10 + '%'
                 }
             j++;
         }
@@ -134,7 +134,7 @@
                 {
                     value: two[j].Variable1.toString(),
                     color: ColourList[j],
-                    label: two[j].Variable2.toString() + ' -' + Math.round(((parseInt(two[j].Variable1) / total6) * 100) * 10) / 10 + '%'
+                    label: two[j].Variable2.toString() + ' - ' + Math.round(((parseInt(two[j].Variable1) / total6) * 100) * 10) / 10 + '%'
                 }
             j++;
         }
