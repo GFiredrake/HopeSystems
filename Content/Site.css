@@ -1023,3 +1023,7 @@ div#SelectionDiv {
 .thisthing {
     color: blue;
 }
+
+.clearDiv {
+    clear:both;
+}
