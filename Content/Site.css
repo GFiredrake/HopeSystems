@@ -371,8 +371,43 @@ input.button {
     float: left;
 }
 
+    select#HowManyMonths {
+    margin-left: 8%;
+}
+
+    select#HowManyMonths {
+    width: 50%;
+}
+
+    select#HowManyPeople {
+    width: 50%;
+}
+
+    div#select_pos {
+    margin-bottom: 20px;
+}
+
+        h2.h2_highestPPspend {
+    text-align: center;
+}
 
 @media (min-width: 520px) {
+
+    /*Customers with highest p&p spend*/
+
+    div#select_pos {
+    margin: 0 auto;
+    max-width: 479px;
+        margin-bottom: 20px;
+    }
+
+    div#select_pos_2 {
+    margin: 0 auto;
+    max-width: 479px;
+    margin-bottom: 20px;
+    }
+
+    /*Customers with highest p&p spend End*/
 
     body {
         font-size: 14px;
@@ -814,6 +849,10 @@ div#SelectionDiv {
     float: left;
     width: 100%;
    }
+
+   .mw_zero {
+    min-width: 0px!important;
+}
 
 
     /* ########### :END: SALES OVERVIEW ########### */

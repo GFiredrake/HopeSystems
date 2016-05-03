@@ -18,15 +18,22 @@ Day Range:
 <br />
 <br />
 <div id="TableArea"  class="HiddenDiv">
+    <div id="swipe_text_wrap">
+        <p class="swipe_text hide-desktop">&#8592;&nbsp;swipe the table below<br /> to view all content&nbsp;&#8594;</p>
+    </div>
     <br />
     <br />
     <h3>Past Rules</h3>
-    <table id="DisplayTable1"></table>
-    <br />
-    <br />
-    <h3>Future Rules</h3>
-    <table id="DisplayTable2"></table>
-</div>
+    <div id="table-scroll">
+        <table id="DisplayTable1"></table>
+    </div>
+        <br />
+        <br />
+        <h3>Future Rules</h3>
+    <div id="table-scroll">
+        <table id="DisplayTable2"></table>
+    </div>
+    </div>
 
 @section scripts {
     @Scripts.Render("~/Content/Scripts/ProductRulesReport.js")

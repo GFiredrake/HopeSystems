@@ -2,10 +2,12 @@
     ViewBag.Title = "HighestPnPSpend";
 }
 
-<h2>Customers with Highest P&P Spend</h2>
+<h2 class="h2_highestPPspend">Customers with Highest P&P Spend</h2>
+<div style="clear: both;"></div>
 
 
-    Up to @Html.DropDownList("HowManyPeople") Customers for the last @Html.DropDownList("HowManyMonths") Months
+    <div id="select_pos">Up to @Html.DropDownList("HowManyPeople") Customers for the last</div>
+    <div id="select_pos_2">@Html.DropDownList("HowManyMonths") Months</div>
     <br/>
     <br />
     <button class="generateButton" id="GenerateButton" onclick="GeneratePnPReport()">Generate Report</button>
