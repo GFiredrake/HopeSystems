@@ -2,10 +2,14 @@
     ViewBag.Title = "PromotionalFreedomPnPSavings";
 }
 
-<h2>Promotional Freedom P&P Savings</h2>
+<h2 class="promo_freedom_title">Promotional Freedom P&P Savings</h2>
 
-<input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
-<input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+<div style="clear: both;"></div>
+
+<div class="promo_freedom_dateselect">
+    <input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+    <input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+</div>
 <br />
 <br />
 @Html.DropDownList("CurrencyType")

@@ -875,6 +875,13 @@ div#SelectionDiv {
 
     /* ########### :END: HighestPnPSpend ########### */
 
+    /* ########### PromotionalFreedomPnPSavings ########### */
+
+    h2.promo_freedom_title {
+    text-align: center;
+}
+
+    /* ########### :END: PromotionalFreedomPnPSavings ########### */
 
 @media (min-width: 520px) {
 
