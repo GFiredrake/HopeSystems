@@ -243,7 +243,7 @@ th, td {
 }
 
 table {
-    margin-top: 50px;
+    margin-top: 20px;
     min-width:100%;
 }
 
@@ -371,8 +371,43 @@ input.button {
     float: left;
 }
 
+    select#HowManyMonths {
+    margin-left: 8%;
+}
+
+    select#HowManyMonths {
+    width: 50%;
+}
+
+    select#HowManyPeople {
+    width: 50%;
+}
+
+    div#select_pos {
+    margin-bottom: 20px;
+}
+
+        h2.h2_highestPPspend {
+    text-align: center;
+}
 
 @media (min-width: 520px) {
+
+    /*Customers with highest p&p spend*/
+
+    div#select_pos {
+    margin: 0 auto;
+    max-width: 479px;
+        margin-bottom: 20px;
+    }
+
+    div#select_pos_2 {
+    margin: 0 auto;
+    max-width: 479px;
+    margin-bottom: 20px;
+    }
+
+    /*Customers with highest p&p spend End*/
 
     body {
         font-size: 14px;
@@ -430,7 +465,7 @@ input.button {
     color: #fff;
     font-weight: bold;
     background-color: #ed137d;
-    max-width: 300px;
+    max-width: 330px;
     margin: 0 auto;
     padding:10px
 }
@@ -636,7 +671,7 @@ div#SelectionDiv {
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 20px 0;
     text-transform:uppercase;
 }
 
@@ -815,6 +850,10 @@ div#SelectionDiv {
     width: 100%;
    }
 
+   .mw_zero {
+    min-width: 0px!important;
+}
+
 
     /* ########### :END: SALES OVERVIEW ########### */
 
@@ -846,9 +885,9 @@ div#SelectionDiv {
 
     div#DateDiv {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     min-width: 300px;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 
