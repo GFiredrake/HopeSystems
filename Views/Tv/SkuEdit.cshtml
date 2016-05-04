@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "SkuEdit";
+}
+
+<h2>SkuEdit</h2>
+
+SKU:
+<input type="number" name="skuInput" id="SkuInput" max="999999" MaxLength="6" pattern="[0-9]*"><br>
+<div id="ErrorDiv" class="errorDiv HiddenDiv">That is not a valid SKU length.</div>
+<br>
+<button class="generateButton" id="GenerateButton" onclick="GetSkuData()">Get Sku Data</button>
+<br />
+<br />
+<br />
+<br />
+<div id="SkuInfoDiv" class="">
+    Tv Description:<br />
+    <textarea rows="4" cols="50"></textarea>
+    <br />
+    Web Text:<br />
+    <textarea rows="4" cols="50"></textarea>
+    <br />
+    Producer Notes:<br />
+    <textarea rows="4" cols="50"></textarea>
+    <br />
+    Buyers Notes:<br />
+    <textarea rows="4" cols="50"></textarea>
+    <br />
+    <br />
+    <button class="generateButton" id="GenerateButton" onclick="SaveSkuData()">Save Sku Data</button>
+</div>

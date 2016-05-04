@@ -369,6 +369,7 @@
     <Content Include="Views\Reporting\ProductRulesReport.cshtml" />
     <Content Include="Views\Reporting\StockExpieryReport.cshtml" />
     <Content Include="Views\Reporting\RandomOrderGenerator.cshtml" />
+    <Content Include="Views\Tv\SkuEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
