@@ -239,7 +239,6 @@ div#MenuDiv a:hover {
 
 th, td {
    border: 1px solid black;
-   min-width: 50px;
 }
 
 table {
@@ -853,6 +852,7 @@ div#SelectionDiv {
    .mw_zero {
     min-width: 0px!important;
 }
+
 
 
     /* ########### :END: SALES OVERVIEW ########### */
