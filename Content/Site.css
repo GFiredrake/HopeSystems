@@ -382,31 +382,11 @@ input.button {
     width: 50%;
 }
 
-    div#select_pos {
-    margin-bottom: 20px;
-}
-
         h2.h2_highestPPspend {
     text-align: center;
 }
 
 @media (min-width: 520px) {
-
-    /*Customers with highest p&p spend*/
-
-    div#select_pos {
-    margin: 0 auto;
-    max-width: 479px;
-        margin-bottom: 20px;
-    }
-
-    div#select_pos_2 {
-    margin: 0 auto;
-    max-width: 479px;
-    margin-bottom: 20px;
-    }
-
-    /*Customers with highest p&p spend End*/
 
     body {
         font-size: 14px;
@@ -853,12 +833,67 @@ div#SelectionDiv {
     min-width: 0px!important;
 }
 
+   /* ########### :END: SALES OVERVIEW ########### */
 
+   
+    /* ########### HighestPnPSpend ########### */
 
-    /* ########### :END: SALES OVERVIEW ########### */
+        div#select_pos {
+    margin-bottom: 20px;
+     }
+
+        .highest_pp_btn {
+    height: 50px;
+    margin: 0 auto;
+
+}
+        .generateButton_highpp {
+            -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    line-height: 34px;
+    display: inline-block;
+    margin: 10px 0 5px 0;
+    color: #fff;
+    background-color: #ed137d;
+    text-align: center;
+    max-width: 300px;
+    cursor: pointer;
+    border: none;
+    padding: 0 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    float: left;
+    width: 100%;
+    max-width: 100%;
+        }
+
+    /* ########### :END: HighestPnPSpend ########### */
 
 
 @media (min-width: 520px) {
+
+
+    /* ########### HighestPnPSpend ########### */
+
+        div#select_pos {
+    margin: 0 auto;
+    max-width: 479px;
+        margin-bottom: 20px;
+    }
+
+    div#select_pos_2 {
+    margin: 0 auto;
+    max-width: 479px;
+    margin-bottom: 20px;
+    }
+
+   .highest_pp_btn {
+    max-width: 300px;
+    }
+
+     /* ########### :END: HighestPnPSpend ########### */
 
     /* ########### DASHBOARD ########### */
 
