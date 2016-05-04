@@ -10,14 +10,18 @@
     <div id="select_pos_2">@Html.DropDownList("HowManyMonths") Months</div>
     <br/>
     <br />
-    <button class="generateButton" id="GenerateButton" onclick="GeneratePnPReport()">Generate Report</button>
+<div class="highest_pp_btn">
+    <button class="generateButton_highpp" id="GenerateButtonhighpp" onclick="GeneratePnPReport()">Generate Report</button>
+</div>
     <br />
     <br />
     <br />
     <div id="CustomersToMakeSavingDiv"></div>
     <div id="TableArea">
-        <table id="DisplayTable"></table>
-    </div>
+        <div id="table-scroll">
+            <table id="DisplayTable"></table>
+        </div>
+        </div>
     <br />
     <br />
 
