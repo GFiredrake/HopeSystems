@@ -587,6 +587,7 @@ namespace InternalWebSystems.Controllers
 
                         SaleRecord.Sku = myReader["parentproductsku"].ToString();
                         SaleRecord.Description = myReader["tvdescription"].ToString();
+                        SaleRecord.Stock = myReader["InStock"].ToString();
                         SaleRecord.Quantity = myReader["qtysold"].ToString();
                         SaleRecord.TurnOver = myReader["salesvalue"].ToString();
 
