@@ -1,4 +1,12 @@
 ﻿function GenerateRandomOrder() {
+    if ($('#SkuInput').val().length > 6)
+    {
+        $('#ErrorDiv').removeClass("HiddenDiv")
+        return false;
+    }
+    else {
+        $('#ErrorDiv').addClass("HiddenDiv")
+    }
     $('#GenerateButton').addClass('HiddenDiv')
     var rates = document.getElementById('Condition1').checked;
 
@@ -70,3 +78,4 @@ function GenerateAdditionalLinesSales(item, tableNumber) {
     content += "</tr>"
     $('#DisplayTable').append(content);
 }
+

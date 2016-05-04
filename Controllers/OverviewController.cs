@@ -105,7 +105,7 @@ namespace InternalWebSystems.Controllers
                     while (myReader.Read())
                     {
                         ReportVariables newItem = new ReportVariables();
-                        newItem.Variable1 = myReader["NumberOfOrders"].ToString();
+                        newItem.Variable1 = myReader["Orders"].ToString();
                         newItem.Variable2 = myReader["CourierType"].ToString();
                         obj.Add(newItem);
                     }
@@ -125,7 +125,7 @@ namespace InternalWebSystems.Controllers
                     while (myReader.Read())
                     {
                         ReportVariables newItem = new ReportVariables();
-                        newItem.Variable1 = myReader["NumberOfOrders"].ToString();
+                        newItem.Variable1 = myReader["Orders"].ToString();
                         newItem.Variable2 = myReader["CourierType"].ToString();
                         obj2.Add(newItem);
                     }

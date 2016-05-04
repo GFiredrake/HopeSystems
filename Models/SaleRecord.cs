@@ -9,6 +9,7 @@ namespace InternalWebSystems.Models
     {
         public string Sku { get; set; }
         public string Description { get; set; }
+        public string Stock { get; set; }
         public string Quantity { get; set; }
         public string TurnOver { get; set; }
     }
