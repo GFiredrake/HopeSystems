@@ -869,6 +869,10 @@ div#SelectionDiv {
     max-width: 100%;
         }
 
+        .table-no-scroll td {
+                padding: 0px 0px!important;
+        }
+
     /* ########### :END: HighestPnPSpend ########### */
 
 
