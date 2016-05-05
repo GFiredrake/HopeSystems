@@ -435,7 +435,7 @@ input.button {
     font-weight:bold;
 }
 
-/*radio buttons style*/
+/*radio buttons positioning*/
 
 .radio_btn_position {
     margin-bottom: 20px;
@@ -460,7 +460,7 @@ div#SelectionDiv {
 
 }
 
-/*radio buttons style End*/
+/*radio buttons positioning End*/
 
 /*Monitoring Start*/
 #MainMonitoringDiv {
@@ -710,6 +710,22 @@ div#SelectionDiv {
 
 /*------- :END: RWD Bootstrap show / hide -------*/
 
+/*------- DateDiv -------*/
+
+input.dateInput  {
+    /* border-color: #000; */
+    border-radius: 2px;
+    background-image: url("https://www.hochanda.com/Styles/Images/product_list_icons.png") !important;
+    background-position: right !important;
+    background-position-y: -284px !important;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 34px !important;
+}
+
+/*------- :END: DateDiv  -------*/
 
 /* ########### DASHBOARD ########### */
 
@@ -885,6 +901,30 @@ div#SelectionDiv {
 
 @media (min-width: 520px) {
 
+     /* ########### PROMOTIONAL FREEDOM P&P SAVINGS ########### */
+
+   .promo_freedom_dateselect {
+    height: 50px;
+    max-width: 600px;
+    margin: 0 auto;
+    }
+
+   .Currency_pos {
+    height: 20px;
+    margin: 0 auto;
+    max-width: 350px;
+   }
+
+   .Currency_pos #CurrencyType {
+       width:100%
+   }
+
+   .promo_freedom_btn {
+       max-width:500px;
+       margin: 0 auto;
+   }
+
+     /* ########### :END: PROMOTIONAL FREEDOM P&P SAVINGS ########### */
 
     /* ########### HighestPnPSpend ########### */
 
@@ -939,7 +979,8 @@ div#SelectionDiv {
 
   /* ########### :END: DASHBOARD ########### */
 
-      /* ########### FLEXIBUY REPORT ########### */
+      
+  /* ########### FLEXIBUY REPORT ########### */
 
   #flexibuyreport_buttons_position {
     margin: 0 auto;
@@ -960,8 +1001,7 @@ div#SelectionDiv {
         margin-left: 1%;
     }
 
-
-      /* ########### :END: FLEXIBUY REPORT ########### */
+  /* ########### :END: FLEXIBUY REPORT ########### */
 
 }
 

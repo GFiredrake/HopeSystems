@@ -12,20 +12,23 @@
 </div>
 <br />
 <br />
-@Html.DropDownList("CurrencyType")
-<br/>
-<br/>
-<button class="generateButton" id="GenerateButton" onclick="GeneratePromotionalFreedomPnPSavings()">Generate Report</button>
-<br />
-<div class="InvisibleDiv" id="LoadingDiv">
-    <img src="~/Content/Images/ajax-loader.gif" />
-</div>
-<br />
-<div id="TableArea">
-    <table id="DisplayTable">
-    </table>
-</div>
+   <div class="Currency_pos">
+    @Html.DropDownList("CurrencyType")
+    </div>
+    <br />
+    <br />
+    <div class="promo_freedom_btn">
+    <button class="generateButton_salesoverview" id="GenerateButton" onclick="GeneratePromotionalFreedomPnPSavings()">Generate Report</button>
+     </div>
+    <br />
+    <div class="InvisibleDiv" id="LoadingDiv">
+        <img src="~/Content/Images/ajax-loader.gif" />
+    </div>
+    <br />
+    <div id="TableArea">
+        <table id="DisplayTable"></table>
+    </div>
 
-@section scripts {
-    @Scripts.Render("~/Content/Scripts/Reports.js")
-}
+    @section scripts {
+        @Scripts.Render("~/Content/Scripts/Reports.js")
+    }
