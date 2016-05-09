@@ -28,7 +28,6 @@ namespace InternalWebSystems.Controllers
 
             return new LogOnController().CheckSessionGuidIsValid(MyCookie["SessionGui"]);
         }
-
         public ActionResult Index()
         {
             //Repetitition need to find a way to extract
@@ -54,9 +53,39 @@ namespace InternalWebSystems.Controllers
             }
             #endregion
             //End Repetition 
+
+            var cookieValue = "0-0";
+            var myCookie = Request.Cookies["HIWSSettings"];
+            if (myCookie != null)
+            {
+                cookieValue = myCookie.Value;
+            }
+            var obj = "";
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_RetrivePermisionLevel"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Guid", cookieValue.Split('=')[1]);
+
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        obj = myReader["permisionLevel"].ToString(); 
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            ViewBag.Permision = obj;
+
             return View();
         }
-
         //Sku Edit
         public ActionResult SkuEdit()
         {
@@ -85,6 +114,149 @@ namespace InternalWebSystems.Controllers
             //End Repetition 
 
             return View();
+        }
+        public JsonResult GetSkuDataToEdit(string Sku)
+        {
+            var pause = 1;
+
+            var cookieValue = "0-0";
+            var myCookie = Request.Cookies["HIWSSettings"];
+            if (myCookie != null)
+            {
+                cookieValue = myCookie.Value;
+            }
+
+            ReportVariables Obj = new ReportVariables();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_EDITSKU_GetParentProductSkuInfo"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Sku", Sku);
+                    command.Parameters.AddWithValue("@LanguageId", 1);
+                    command.Parameters.AddWithValue("@Gui", cookieValue.Split('=')[1]);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        Obj.Variable1 = myReader["Parentproductid"].ToString();
+                        Obj.Variable2 = myReader["Description"].ToString();
+                        Obj.Variable3 = myReader["WebText"].ToString();
+                        Obj.Variable4 = myReader["ProducerNotes"].ToString();
+                        Obj.Variable5 = myReader["BuyerNotes"].ToString();
+                        Obj.Variable6 = myReader["IsActive"].ToString();
+                        Obj.Variable7 = myReader["permisionLevel"].ToString();
+                        Obj.Variable8 = myReader["ModifiedDate"].ToString();
+                        Obj.Variable9 = myReader["ModifiedBy"].ToString();
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return Json(Obj, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetSkuVariationDataToEdit(string Sku, string PPId)
+        {
+            var pause = 1;
+
+            List<ReportVariables> Obj = new List<ReportVariables>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_EDITSKU_GetVariationProductSkuInfo"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@LanguageId", 1);
+                    command.Parameters.AddWithValue("@Parentproductid", PPId);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ReportVariables newObj = new ReportVariables();
+                        newObj.Variable1 = myReader["variationproductsku"].ToString();
+                        newObj.Variable2 = myReader["variationname"].ToString();
+                        newObj.Variable3 = myReader["freeqty"].ToString();
+                        newObj.Variable4 = myReader["active"].ToString();
+                        Obj.Add(newObj);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return Json(Obj, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult SaveDataForSku(FormCollection collection)
+        {
+            int number = collection.Count;
+            int Vs = 5;
+            var cookieValue = "0-0";
+            var myCookie = Request.Cookies["HIWSSettings"];
+            if (myCookie != null)
+            {
+                cookieValue = myCookie.Value;
+            }
+            var pause = 1;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            #region Save Main Info
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_EDITSKU_SaveParentProductSkuInfo"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ProductId", collection[0]);
+                    command.Parameters.AddWithValue("@Description", collection[1]);
+                    command.Parameters.AddWithValue("@WebText", collection[2]);
+                    command.Parameters.AddWithValue("@ProducerNotes", collection[3]);
+                    command.Parameters.AddWithValue("@BuyerNotes", collection[4]);
+                    command.Parameters.AddWithValue("@LanguageId", 1);
+                    command.Parameters.AddWithValue("@Guid", cookieValue.Split('=')[1]);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            #endregion
+
+            while (Vs < number)
+            {
+                
+
+                #region Save Variation Info
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand("SPU_HT_EDITSKU_SaveVariationProductSkuInfo"))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ProductId", collection[0]);
+                        command.Parameters.AddWithValue("@LanguageId", 1);
+                        command.Parameters.AddWithValue("@VariationDesciption", collection[Vs]);
+                        Vs++;
+                        command.Parameters.AddWithValue("@VariationSku", collection[Vs]);
+                        Vs++;
+                        command.Connection = connection;
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                #endregion
+                
+                
+            }
+            return RedirectToAction("SkuEdit", "Tv");
         }
 
         //Minuets
@@ -400,7 +572,6 @@ namespace InternalWebSystems.Controllers
 
             return RedirectToAction("Minutes", "Tv");
         }
-       
         public void SendMinutesEmail(string date)
         {
 
