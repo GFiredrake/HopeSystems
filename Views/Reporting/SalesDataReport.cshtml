@@ -2,29 +2,35 @@
     ViewBag.Title = "ItemsOrderedBetweenDates";
 }
 
-<h2>Items Ordered Between Dates</h2>
+<h2 class="promo_freedom_title">Items Ordered Between Dates</h2>
+<div style="clear: both;"></div>
 
-<input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
-<input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
-<br />
-<br />
-@*<button class="generateButton" id="GenerateButton" onclick="GenerateSalesDataReport()">Generate Report</button>*@
-<button class="generateButton" id="GenerateButton" onclick="alternativeGeneration()">Generate Report</button>
-<a id="dlink" style="display:none;"></a>
-<div class="" id="ExportDiv">
-    @*<input class="generateButton" type="button" onclick="tableToExcel('DisplayTable', 'Flexi Buy Report', '.xls')" value="Export to Excel">*@
-    <input class="generateButton" type="button" onclick="tableToExcel2()" value="Export to Excel">
-</div>
-<br />
-<div class="InvisibleDiv" id="LoadingDiv">
-    <img src="~/Content/Images/ajax-loader.gif" />
-</div>
-<br />
-<div id="TableArea">
-    <table id="DisplayTable"></table>
-</div>
+<div class="promo_freedom_dateselect">
+    <input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+    <input type="date" class="dateInput" id="endDate" name="endDate" min="2015-08-27" value="@ViewBag.TodaysDate">
+ </div>
 
-@section scripts {
-    @Scripts.Render("~/Content/Scripts/Reports.js")
-    @Scripts.Render("~/Content/Scripts/jquery.table2excel.js")
-}
+<div style="clear: both;"></div>
+    <br />
+<div id="flexibuyreport_buttons_position">
+    @*<button class="generateButton" id="GenerateButton" onclick="GenerateSalesDataReport()">Generate Report</button>*@
+    <button class="generateButton generateButton_flexipay" id="GenerateButton" onclick="alternativeGeneration()">Generate Report</button>
+    <a id="dlink" style="display:none;"></a>
+    <div class="" id="ExportDiv">
+        @*<input class="generateButton" type="button" onclick="tableToExcel('DisplayTable', 'Flexi Buy Report', '.xls')" value="Export to Excel">*@
+        <input class="generateButton generateButton_flexipay" type="button" onclick="tableToExcel2()" value="Export to Excel">
+    </div>
+    </div>
+    <br />
+    <div class="InvisibleDiv" id="LoadingDiv">
+        <img src="~/Content/Images/ajax-loader.gif" />
+    </div>
+    <br />
+    <div id="TableArea">
+        <table id="DisplayTable"></table>
+    </div>
+
+    @section scripts {
+        @Scripts.Render("~/Content/Scripts/Reports.js")
+        @Scripts.Render("~/Content/Scripts/jquery.table2excel.js")
+    }

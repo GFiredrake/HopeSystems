@@ -851,10 +851,32 @@ input.dateInput  {
 
    /* ########### :END: SALES OVERVIEW ########### */
 
-   
-    /* ########### HighestPnPSpend ########### */
+    /* ########### JEROME CSS ########### */
 
-        div#select_pos {
+
+       .generateButton_onebtn {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    line-height: 34px;
+    display: inline-block;
+    color: #fff;
+    background-color: #ed137d;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    padding: 0 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    float: left;
+    width: 100%;
+   }
+
+
+   /*------- HighestPnPSpend  -------*/  
+
+           div#select_pos {
     margin-bottom: 20px;
      }
 
@@ -885,23 +907,28 @@ input.dateInput  {
     max-width: 100%;
         }
 
-        .table-no-scroll td {
-                padding: 0px 0px!important;
-        }
+    .table-no-scroll td {
+    padding: 0px 0px!important;
+     }
 
-    /* ########### :END: HighestPnPSpend ########### */
+   /*------- :END: HighestPnPSpend  -------*/  
 
-    /* ########### PromotionalFreedomPnPSavings ########### */
+   /*------- PromotionalFreedomPnPSavings  -------*/  
 
-    h2.promo_freedom_title {
+       h2.promo_freedom_title {
     text-align: center;
-}
+   }
 
-    /* ########### :END: PromotionalFreedomPnPSavings ########### */
+   /*------- :END: PromotionalFreedomPnPSavings  -------*/  
+
+   /* ########### :END: JEROME CSS ########### */
+
 
 @media (min-width: 520px) {
 
-     /* ########### PROMOTIONAL FREEDOM P&P SAVINGS ########### */
+     /* ########### JEROME CSS ########### */
+
+     /*------- PROMOTIONAL FREEDOM P&P SAVINGS -------*/  
 
    .promo_freedom_dateselect {
     height: 50px;
@@ -924,9 +951,10 @@ input.dateInput  {
        margin: 0 auto;
    }
 
-     /* ########### :END: PROMOTIONAL FREEDOM P&P SAVINGS ########### */
+   /*------- :END: PROMOTIONAL FREEDOM P&P SAVINGS -------*/  
 
-    /* ########### HighestPnPSpend ########### */
+
+     /*------- HighestPnPSpend -------*/  
 
         div#select_pos {
     margin: 0 auto;
@@ -944,9 +972,10 @@ input.dateInput  {
     max-width: 300px;
     }
 
-     /* ########### :END: HighestPnPSpend ########### */
+    /*------- :END: HighestPnPSpend -------*/  
 
-    /* ########### DASHBOARD ########### */
+   /*------- DASHBOARD -------*/    
+
 
     .BoxDiv {
         height: 110px;
@@ -961,26 +990,27 @@ input.dateInput  {
     background: #ed137d;
     }
 
+
+
     .generateButton {
     width: 30%;
-    /* max-width: 335px; */
     margin: 0;
     margin-left: 3%;
     margin-bottom: 30px;
-}
+    }
 
-    div#DateDiv {
+
+
+    #DateDiv {
     margin: 0 auto;
     width: 100%;
     min-width: 300px;
     max-width: 600px;
-}
+   }
 
+  /*------- :END: DASHBOARD -------*/    
 
-  /* ########### :END: DASHBOARD ########### */
-
-      
-  /* ########### FLEXIBUY REPORT ########### */
+  /*------- FLEXIBUY REPORT -------*/
 
   #flexibuyreport_buttons_position {
     margin: 0 auto;
@@ -990,18 +1020,20 @@ input.dateInput  {
     max-width: 600px;
    }
 
-  .Datediv_flexibuyreport {
+   .Datediv_flexibuyreport {
     margin: 0 auto;
     width: 50%;
     max-width: 600px;
    }
 
-     .generateButton_flexipay {
+       .generateButton_dualbtn {
     width: 47%;
         margin-left: 1%;
     }
+ 
+   /*------- :END: FLEXIBUY REPORT -------*/
 
-  /* ########### :END: FLEXIBUY REPORT ########### */
+  /* ########### :END: JEROME CSS ########### */
 
 }
 
