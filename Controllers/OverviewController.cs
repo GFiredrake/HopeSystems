@@ -79,6 +79,8 @@ namespace InternalWebSystems.Controllers
                         obj.Add(myReader["NonFredomCustomers"].ToString());
                         obj.Add(myReader["WebOrders7"].ToString());
                         obj.Add(myReader["PhoneOrders7"].ToString());
+                        obj.Add(myReader["DpdFredom"].ToString());
+                        obj.Add(myReader["NonDpdFreedom"].ToString());
                     }
 
                     connection.Close();
