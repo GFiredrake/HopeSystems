@@ -30,8 +30,8 @@
         //Customers Normal Vs Freedom
         var total2 = parseInt(data[4]) + parseInt(data[5]);
         var CustomerNormalVsFreedomDynamicData = [];
-        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[1], highlight: HighLightList[0], label: "Freedom - " + Math.round(((parseInt(data[4]) / total2) * 100) * 10) / 10 + '%' }
-        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[0], highlight: HighLightList[1], label: "Non Freedom - " + Math.round(((parseInt(data[5]) / total2) * 100) * 10) / 10 + '%' }
+        CustomerNormalVsFreedomDynamicData[0] = { value: data[4], color: ColourList[1], highlight: HighLightList[1], label: "Freedom - " + Math.round(((parseInt(data[4]) / total2) * 100) * 10) / 10 + '%' }
+        CustomerNormalVsFreedomDynamicData[1] = { value: data[5], color: ColourList[0], highlight: HighLightList[0], label: "Non Freedom - " + Math.round(((parseInt(data[5]) / total2) * 100) * 10) / 10 + '%' }
 
         var CustomerNormalVsFreedomOptions = {
             segmentShowStroke: false,
@@ -73,6 +73,21 @@
         var WebVsPhone7DaysPie = document.getElementById("PieWebVsPhone7Days").getContext("2d");
         var WebVsPhone7DaysDynamicPieNew = new Chart(WebVsPhone7DaysPie).Pie(WebVsPhone7DaysDynamicData, WebVsPhone7DaysOptions);
         document.getElementById('PieWebVsPhone7DaysLegend').innerHTML = WebVsPhone7DaysDynamicPieNew.generateLegend();
+        //Freedom Members
+        var FreedomMembersCount = 2;
+        var FreedomMembersDynamicData = [];
+        FreedomMembersDynamicData[0] = { value: data[8], color: ColourList[0], highlight: HighLightList[0], label: "DPD Members - " + Math.round(((parseInt(data[8]) / total4) * 100) * 10) / 10 + '%' }
+        FreedomMembersDynamicData[1] = { value: data[9], color: ColourList[1], highlight: HighLightList[1], label: "Basic Members - " + Math.round(((parseInt(data[9]) / total4) * 100) * 10) / 10 + '%' }
+
+        var FreedomMembersOptions = {
+            segmentShowStroke: false,
+            animateRotate: true,
+            animateScale: false,
+        }
+
+        var FreedomMembersPie = document.getElementById("PieFreedomMembers").getContext("2d");
+        var FreedomMembersDynamicPieNew = new Chart(FreedomMembersPie).Pie(FreedomMembersDynamicData, FreedomMembersOptions);
+        document.getElementById('FreedomMembersLegend').innerHTML = FreedomMembersDynamicPieNew.generateLegend();
     })
     .fail(function (xhr, status, error) {
         alert("an error has occured, Please try again. if this problem persists please seak technical support : " + xhr.responseText);

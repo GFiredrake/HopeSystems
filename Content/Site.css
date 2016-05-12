@@ -1191,3 +1191,15 @@ input.dateInput  {
 .clearDiv {
     clear:both;
 }
+
+.red {
+    color:#f00
+}
+
+.green {
+    color:#007c0e
+}
+
+.skueditdescription{
+    width: 510px;
+}

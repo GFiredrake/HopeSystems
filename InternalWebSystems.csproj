@@ -214,6 +214,7 @@
     <Content Include="Content\Scripts\Overview.js" />
     <Content Include="Content\Scripts\pol.js" />
     <Content Include="Content\Scripts\RandomOrderGeneration.js" />
+    <Content Include="Content\Scripts\SkuEdit.js" />
     <Content Include="Content\Scripts\StockExpieryReport.js" />
     <Content Include="Content\Scripts\ProductRulesReport.js" />
     <Content Include="Content\Scripts\resend.js" />
@@ -222,6 +223,7 @@
     <Content Include="Content\Scripts\Reports.js" />
     <Content Include="Content\Scripts\test.js" />
     <Content Include="Content\Scripts\Tv.js" />
+    <Content Include="Content\Scripts\TvIndex.js" />
     <Content Include="Content\Sounds\cash-register-05.wav" />
     <Content Include="Content\Sounds\gameover.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

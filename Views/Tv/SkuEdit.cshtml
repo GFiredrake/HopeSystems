@@ -2,30 +2,58 @@
     ViewBag.Title = "SkuEdit";
 }
 
-<h2>SkuEdit</h2>
+<h2>Edit Product</h2>
 
 SKU:
-<input type="number" name="skuInput" id="SkuInput" max="999999" MaxLength="6" pattern="[0-9]*"><br>
+<input type="number" name="skuInput" id="SkuInput" max="999999" MaxLength="6" pattern="[0-9]*" ><br>
 <div id="ErrorDiv" class="errorDiv HiddenDiv">That is not a valid SKU length.</div>
+<div id="SkuErrorDiv" class="errorDiv HiddenDiv">That is not a valid SKU.</div>
 <br>
-<button class="generateButton" id="GenerateButton" onclick="GetSkuData()">Get Sku Data</button>
+<button class="generateButton" id="GenerateButton" onclick="GetSkuData()">Edit</button>
 <br />
 <br />
 <br />
 <br />
-<div id="SkuInfoDiv" class="">
-    Tv Description:<br />
-    <textarea rows="4" cols="50"></textarea>
-    <br />
-    Web Text:<br />
-    <textarea rows="4" cols="50"></textarea>
-    <br />
-    Producer Notes:<br />
-    <textarea rows="4" cols="50"></textarea>
-    <br />
-    Buyers Notes:<br />
-    <textarea rows="4" cols="50"></textarea>
-    <br />
-    <br />
-    <button class="generateButton" id="GenerateButton" onclick="SaveSkuData()">Save Sku Data</button>
+<div id="SkuInfoDiv" class="HiddenDiv">
+@using (Html.BeginForm("SaveDataForSku", "Tv"))
+{
+    <div>
+        <input class="Hidden" name="ProductId" id="ProductId"/>
+        <br />
+        TV Description:<br />
+        <input type="text" id="Description" name="Description" class="skueditdescription"/>
+        <br />
+        Web Text:<br />
+        <textarea id="WebText" name="WebText" rows="5" cols="70"></textarea>
+        <br />
+        Producer Notes:<br />
+        <textarea id="ProducerNotesSku" name="ProducerNotesSku" rows="5" cols="70"></textarea>
+        <br />
+        Buyers Notes:<br />
+        <textarea id="BuyerNotes" name="BuyerNotes" rows="5" cols="70"></textarea>
+        <br />
+        
+        <div id="IsActive"></div>@*<input type="checkbox" id="IsActiveCheckBox" class="Hidden PermisionCheckbox" value="Active">
+
+        <input type="number" name="IsActiveCheckBoxValue" id="IsActiveCheckBoxValue" class="Hidden"/>*@
+        <br />
+        <h3>Variations:</h3><br />
+        <div id="VariationDiv">
+
+        </div>
+        <br />
+        @*<button class="generateButton" id="GenerateButton" onclick="SaveSkuData()">Save Sku Data</button>*@
+        <div id="LastModified"></div>
+        <br />
+        <input type="checkbox" id="toggle" /><span>Please confirm you wish to save these details</span>
+        <br />
+        <br />
+        <input class="generateButton" type="submit" id="SaveSkuForm" disabled="disabled" value="Save Changes" />
+    </div>
+}
 </div>
+
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/SkuEdit.js")
+}

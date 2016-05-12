@@ -1,12 +1,19 @@
 ﻿@{
     ViewBag.Title = "Index";
+
 }
 
 <h2>TV Services</h2>
 
+<input id="PermissionLevel" value="@ViewBag.Permision" class="Hidden" />
 
 
-
-@Html.ActionLink("Pol Sheets", "index", "polsheet", null, new { @class = "generateButton" })
+@Html.ActionLink("Pol Sheets", "index", "polsheet", null, new { @class = "generateButton", @id="PolSheetButton" })
 @Html.ActionLink("Show Minutes", "Minutes", "Tv", null, new { @class = "generateButton" })
 @Html.ActionLink("Random Order Generator", "RandomOrderGenerator", "Reporting", null, new { @class = "generateButton" })
+@Html.ActionLink("Edit Product", "SkuEdit", "Tv", null, new { @class = "generateButton Hidden", @id = "SkuEditButton" })
+
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/TvIndex.js")
+}

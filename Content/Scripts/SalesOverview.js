@@ -40,8 +40,8 @@ function ItemsSoldTotay(Currency) {
           $('#DisplayTable2').append("<tr>" +
                                           "<td>SKU</td>" +
                                           "<td>Description</td>" +
-                                          "<td>Free Quantity</td>" +
-                                          "<td>Quantity Sold</td>" +
+                                          "<td>Stock Qty</td>" +
+                                          "<td>Qty Sold</td>" +
                                           "<td>IncVAT Turnover (" + symbol + ")</td>" +
                                       "</tr>");
           $.each(list, function (index, item) {
