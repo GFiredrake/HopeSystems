@@ -919,13 +919,50 @@ input.dateInput  {
 
    /*------- :END: PROMOTIONAL FREEDOM P&P SAVINGS  -------*/  
 
+   /*------- POLSHEET INDEX  -------*/  
+
      .prep_notes_checkbox {
     max-width: 200px;
     padding: 5px;
     border: 1px solid #ed137d;
     /* padding: 3px 10px 10px 10px; */
     background-color: #fff;
+    margin: 0 auto;
   }
+
+    #MainPolIndex #startDate {
+    width: 97%;
+    height: 20%;
+    margin-bottom: 5%;
+    font-size: 25px;
+    margin-left: 1%;
+  }
+     #polButton {
+    font: 13.3333px Arial;
+    text-rendering: auto;
+    color: #fff;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: uppercase;
+    text-indent: 0px;
+    text-shadow: none;
+    line-height: 34px;
+   }
+
+    input#startTime {
+    width: 97%;
+    margin-left: 1%;
+    }
+
+    #MainPolIndex h4 {
+      text-align: center;
+   }
+
+    .polsheet_title {
+    text-align: center;        
+    }
+
+   /*------- :END: POLSHEET INDEX  -------*/  
 
    /* ########### :END: JEROME CSS ########### */
 
@@ -1038,6 +1075,17 @@ input.dateInput  {
     }
  
    /*------- :END: FLEXIBUY REPORT -------*/
+
+
+   /*------- POLSHEET INDEX -------*/
+
+   .input_position {
+    margin: 0 auto;
+    max-width: 300px;
+    margin-bottom: 20px;
+   }
+
+   /*------- :END: POLSHEET INDEX -------*/
 
 
   /* ########### :END: JEROME CSS ########### */

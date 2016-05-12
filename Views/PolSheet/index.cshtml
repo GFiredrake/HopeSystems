@@ -2,23 +2,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pol Sheets Index</h2>
+<h2 class="polsheet_title">Pol Sheets Index</h2>
 
 <div id="MainPolIndex">
     @{ using (Html.BeginForm("cmdmakepolsheet_Click", "PolSheet", FormMethod.Post))
-     {
-        <input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" />
-        <input type="time" class="timeInput" id="startTime" name="startTime" /><br/>
+        {
+            <div style="clear: both;"></div>
+        <div class="input_position">
+           <input type="date" class="dateInput" id="startDate" name="startDate" min="2015-08-27" />
+         </div>
 
-        <div class="prep_notes_checkbox">
-            <input type="checkbox" name="CheckPrepNotes" value="CheckPrepNotes" id="prepNotes" /><span id="checkPolSpan">Check Prep Notes</span>
-        </div>
+        <h4>Please enter show time</h4>
 
+        <div class="input_position">
+            <input type="time" class="timeInput" id="startTime" name="startTime" /><br />
+       </div>
 
-         <input type="submit" value="Generate Pol Sheet" id="polButton" />
-     }
-    }
-</div>
+            <div class="prep_notes_checkbox">
+                <input type="checkbox" name="CheckPrepNotes" value="CheckPrepNotes" id="prepNotes" /><span id="checkPolSpan">Check Prep Notes</span>
+            </div>
+
+            <div class="input_position">
+                <input type="submit" value="Generate Pol Sheet" id="polButton" class="generateButton_onebtn" id="GenerateButton" />
+                </div>
+                }
+                }
+            </div>
 
 @section scripts {
     @Scripts.Render("~/Content/Scripts/pol.js")
