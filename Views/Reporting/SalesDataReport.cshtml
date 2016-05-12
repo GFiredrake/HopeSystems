@@ -12,15 +12,15 @@
 
 <div style="clear: both;"></div>
     <br />
-<div id="flexibuyreport_buttons_position">
+<div id="dualbtn_position">
     @*<button class="generateButton" id="GenerateButton" onclick="GenerateSalesDataReport()">Generate Report</button>*@
-    <button class="generateButton generateButton_flexipay" id="GenerateButton" onclick="alternativeGeneration()">Generate Report</button>
+    <button class="generateButton generateButton_dualbtn" id="GenerateButton" onclick="alternativeGeneration()">Generate Report</button>
     <a id="dlink" style="display:none;"></a>
     <div class="" id="ExportDiv">
         @*<input class="generateButton" type="button" onclick="tableToExcel('DisplayTable', 'Flexi Buy Report', '.xls')" value="Export to Excel">*@
-        <input class="generateButton generateButton_flexipay" type="button" onclick="tableToExcel2()" value="Export to Excel">
+        <input class="generateButton generateButton_dualbtn" type="button" onclick="tableToExcel2()" value="Export to Excel">
     </div>
-    </div>
+    </div><!-- dualbtn_position -->
     <br />
     <div class="InvisibleDiv" id="LoadingDiv">
         <img src="~/Content/Images/ajax-loader.gif" />
