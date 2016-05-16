@@ -163,6 +163,9 @@
     <Compile Include="Controllers\CMSController.cs" />
     <Compile Include="Controllers\CustomerServiceController.cs" />
     <Compile Include="Controllers\OverviewController.cs" />
+    <Compile Include="Models\SkuStockReport.cs" />
+    <Compile Include="Models\OdsReport.cs" />
+    <Compile Include="Models\OdsVariation.cs" />
     <Compile Include="Models\StockExpieryReportModel.cs" />
     <Compile Include="Models\ProductRulesModel.cs" />
     <Compile Include="Models\DashboardBaseModel.cs" />
@@ -211,10 +214,12 @@
     <Content Include="Content\Scripts\Metadata.js" />
     <Content Include="Content\Scripts\MonitoringMain - Copy.js" />
     <Content Include="Content\Scripts\MonitoringMain.js" />
+    <Content Include="Content\Scripts\OdsReport.js" />
     <Content Include="Content\Scripts\Overview.js" />
     <Content Include="Content\Scripts\pol.js" />
     <Content Include="Content\Scripts\RandomOrderGeneration.js" />
     <Content Include="Content\Scripts\SkuEdit.js" />
+    <Content Include="Content\Scripts\SkuStockReport.js" />
     <Content Include="Content\Scripts\StockExpieryReport.js" />
     <Content Include="Content\Scripts\ProductRulesReport.js" />
     <Content Include="Content\Scripts\resend.js" />
@@ -372,6 +377,8 @@
     <Content Include="Views\Reporting\StockExpieryReport.cshtml" />
     <Content Include="Views\Reporting\RandomOrderGenerator.cshtml" />
     <Content Include="Views\Tv\SkuEdit.cshtml" />
+    <Content Include="Views\Reporting\OdsReport.cshtml" />
+    <Content Include="Views\Reporting\SkuStockReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

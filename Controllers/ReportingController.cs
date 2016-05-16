@@ -1487,5 +1487,235 @@ namespace InternalWebSystems.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
+        //ODS Report
+        public ActionResult OdsReport()
+        {
+            //Repetitition need to find a way to extract
+            #region Repeated Page validation and navigation controll
+            bool MyCookie = IsCookiePresentAndSessionValid("HIWSSettings");
+
+            if (MyCookie == false)
+            {
+                return View("Index", "Home");
+            }
+
+            HttpCookie aCookie = Request.Cookies["HIWSSettings"];
+            List<string> somelist = new LogOnController().GenerateMenuForSession(aCookie["SessionGui"]);
+            if (somelist != null)
+            {
+                StringBuilder astring = new StringBuilder();
+                foreach (string buttonString in somelist)
+                {
+                    astring.Append(buttonString);
+                }
+
+                ViewBag.MenuHtml = astring.ToString();
+            }
+            #endregion
+            //End Repetition 
+            List<SelectListItem> obj = new List<SelectListItem>();
+            obj.Add(new SelectListItem { Text = "Please Select One...", Value = "0" });
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            #region Generate Active Channels dropdown
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Get_Active_Channel"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        obj.Add(new SelectListItem { Text = myReader["channelname"].ToString(), Value = myReader["channelid"].ToString() });
+                    }
+
+                    connection.Close();
+                }
+            }
+            #endregion
+            ViewBag.ActiveChannels = obj;
+
+            return View();
+        }
+        public JsonResult GenerateOdsReport(string Date, string Channell)
+        {
+            List<OdsReport> obj = new List<OdsReport>();
+            var fullDate = Date + " 00:00:00.000";
+
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                #region Generate Main report
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GenerateOdsReport"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ChanellID", Channell);
+                    command.Parameters.AddWithValue("@Date", Date);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        OdsReport data = new OdsReport();
+                        data.Variable1 = myReader["HourTime"].ToString();
+                        data.Variable2 = myReader["IncVat"].ToString();
+                        data.Variable3 = myReader["ExVat"].ToString();
+                        data.Variable4 = myReader["IncVatMargin"].ToString();
+                        data.Variable5 = myReader["ExVatMargin"].ToString();
+                        data.Variable6 = myReader["SoldQty"].ToString();
+                        obj.Add(data);
+
+                    }
+                    connection.Close();
+                }
+                #endregion
+                #region Generate Base top Info
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GetODSinfo"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ChanellID", Channell);
+                    command.Parameters.AddWithValue("@Date", Date);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        ViewBag.Sku = myReader["SKU"].ToString();
+                        ViewBag.Description = myReader["ProductDescription"].ToString();
+
+                    }
+                    connection.Close();
+                }
+                #endregion
+            }
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GenerateTopInfo(string Date, string Channell)
+        {
+            List<string> obj = new List<string>();
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                #region Generate Base top Info
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GetODSinfo"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ChanellID", Channell);
+                    command.Parameters.AddWithValue("@Date", Date);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        obj.Add(myReader["SKU"].ToString());
+                        obj.Add(myReader["ProductDescription"].ToString());
+
+                    }
+                    connection.Close();
+                }
+                #endregion
+            }
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GenerateVariationInfo(string Date, string Channell)
+        {
+            List<OdsVariation> obj = new List<OdsVariation>();
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                #region Generate Base top Info
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_OdsVariationInfo"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ChanellID", Channell);
+                    command.Parameters.AddWithValue("@Date", Date);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        OdsVariation something = new OdsVariation();
+                        something.Variable1 = myReader["SKU"].ToString();
+                        something.Variable2 = myReader["ProductDescription"].ToString();
+                        something.Variable3 = myReader["StockLevel"].ToString();
+                        obj.Add(something);
+
+                    }
+                    connection.Close();
+                }
+                #endregion
+            }
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        //Sku Stock Report
+        public ActionResult SkuStockReport()
+        {
+            //Repetitition need to find a way to extract
+            #region Repeated Page validation and navigation controll
+            bool MyCookie = IsCookiePresentAndSessionValid("HIWSSettings");
+
+            if (MyCookie == false)
+            {
+                return View("Index", "Home");
+            }
+
+            HttpCookie aCookie = Request.Cookies["HIWSSettings"];
+            List<string> somelist = new LogOnController().GenerateMenuForSession(aCookie["SessionGui"]);
+            if (somelist != null)
+            {
+                StringBuilder astring = new StringBuilder();
+                foreach (string buttonString in somelist)
+                {
+                    astring.Append(buttonString);
+                }
+
+                ViewBag.MenuHtml = astring.ToString();
+            }
+            #endregion
+            //End Repetition 
+
+            return View();
+        }
+        public JsonResult GenerateSkuStockReportReport()
+        {
+            List<SkuStockReport> obj = new List<SkuStockReport>();
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                #region Generate Base top Info
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GenerateSkuStockReport"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        var newSkuStockReport = new SkuStockReport();
+                        newSkuStockReport.VariationProductSku = myReader["variationproductsku"].ToString();
+                        newSkuStockReport.TvDescription = myReader["tvdescription"].ToString();
+                        newSkuStockReport.VariationName = myReader["variationname"].ToString();
+                        newSkuStockReport.FreeQty = myReader["freeqty"].ToString();
+                        newSkuStockReport.SupplierName = myReader["suppliername"].ToString();
+                        newSkuStockReport.BuyerName = myReader["buyername"].ToString();
+                        obj.Add(newSkuStockReport);
+
+                    }
+                    connection.Close();
+                }
+                #endregion
+            }
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "SkuStockReport";
+}
+
+<h2>Sku Stock Report</h2>
+
+<div id="TableArea" class="HiddenDiv">
+    <table id="DisplayTable"></table>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/SkuStockReport.js")
+}

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "OdsReport";
+}
+
+<h2>One Day Special Report</h2>
+
+<input type="date" id="DateSelector">
+@Html.DropDownList("ActiveChannels")
+<br />
+<div id="ErrorDiv" class="Hidden">Please compleate both Date and Channel.</div>
+<br />
+<button class="generateButton_onebtn" id="GenerateButton" onclick="GenerateOdsReport()">Generate Report</button>
+<br />
+<br />
+<div class="HiddenDiv" id="TopInfoDiv">
+    <h3 >SKU</h3>
+    <h4 id="SkuH"></h4>
+    <h3>Description</h3>
+    <h4 id="DescriptionH"></h4>
+    <div id="variationDiv"></div>
+</div>
+<br />
+<br />
+<div id="TableArea" class="HiddenDiv">
+    <table id="DisplayTable"></table> 
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/OdsReport.js")
+}
