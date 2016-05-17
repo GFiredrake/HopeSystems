@@ -964,6 +964,21 @@ input.dateInput  {
 
    /*------- :END: POLSHEET INDEX  -------*/  
 
+       /*------- MINUTES -------*/
+
+    .show_details {
+    background-color: #ed137d;
+    color: #fff;
+    max-width: 320px;
+    padding: 2px;
+    }
+
+    .details_pos {
+    padding-left: 2px;
+    }
+
+   /*------- :END: MINUTES -------*/
+
    /* ########### :END: JEROME CSS ########### */
 
 
@@ -1045,7 +1060,6 @@ input.dateInput  {
 
 
     #DateDiv {
-    margin: 0 auto;
     width: 100%;
     min-width: 300px;
     max-width: 600px;
@@ -1087,6 +1101,17 @@ input.dateInput  {
 
    /*------- :END: POLSHEET INDEX -------*/
 
+    /*------- MINUTES -------*/
+
+    #DateDiv2 {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 300px;
+    max-width: 600px;
+   }
+
+
+   /*------- :END: MINUTES -------*/
 
   /* ########### :END: JEROME CSS ########### */
 
