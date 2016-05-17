@@ -218,6 +218,7 @@
     <Content Include="Content\Scripts\Overview.js" />
     <Content Include="Content\Scripts\pol.js" />
     <Content Include="Content\Scripts\RandomOrderGeneration.js" />
+    <Content Include="Content\Scripts\ReportsIndex.js" />
     <Content Include="Content\Scripts\SkuEdit.js" />
     <Content Include="Content\Scripts\SkuStockReport.js" />
     <Content Include="Content\Scripts\StockExpieryReport.js" />
@@ -379,6 +380,7 @@
     <Content Include="Views\Tv\SkuEdit.cshtml" />
     <Content Include="Views\Reporting\OdsReport.cshtml" />
     <Content Include="Views\Reporting\SkuStockReport.cshtml" />
+    <Content Include="Views\Reporting\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
