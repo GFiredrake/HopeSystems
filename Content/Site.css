@@ -1216,8 +1216,8 @@ input.dateInput  {
 }
 
 #ProducerNotes, #DirectorNotes, #FloorNotes, #ForwardNotes {
-    min-height: 500px!important;
-    min-width: 800px!important;
+    min-height: 300px!important;
+    min-width: 98%!important;
 }
 
 .chart-legend li span{
