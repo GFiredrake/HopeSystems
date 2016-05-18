@@ -18,7 +18,7 @@ namespace InternalWebSystems.Controllers
 {
     public class ReportingController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index2()
         {
             //Repetitition need to find a way to extract
             #region Repeated Page validation and navigation controll
@@ -72,7 +72,7 @@ namespace InternalWebSystems.Controllers
             ViewBag.Title = "Reports";
             return View();
         }
-        public ActionResult Index2()
+        public ActionResult Index()
         {
             //Repetitition need to find a way to extract
             #region Repeated Page validation and navigation controll
@@ -185,6 +185,40 @@ namespace InternalWebSystems.Controllers
             }
 
             return new LogOnController().CheckSessionGuidIsValid(MyCookie["SessionGui"]);
+        }
+        public JsonResult GenerateAvailableReportsSinglePage()
+        {
+            HttpCookie aCookie = Request.Cookies["HIWSSettings"];
+
+            List<AvailableReportModel> obj = new List<AvailableReportModel>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_ReturnAppropriateReportsSinglePage"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@Guid", aCookie["SessionGui"]);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        AvailableReportModel report = new AvailableReportModel();
+                        report.ReportName = myReader["reportname"].ToString();
+                        report.ReportAction = myReader["reportaction"].ToString();
+                        report.DepartmentId = myReader["DepartmentId"].ToString();
+                        obj.Add(report);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+
         }
 
         //Buyer Stock Report

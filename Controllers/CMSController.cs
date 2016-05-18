@@ -381,5 +381,41 @@ namespace InternalWebSystems.Controllers
                 }
             }
         }
+
+        //Header Advert Carousel 
+        public ActionResult HeaderAdvertCarousel()
+        {
+            //Repetitition need to find a way to extract
+            #region Repeated Page validation and navigation controll
+            bool MyCookie = IsCookiePresentAndSessionValid("HIWSSettings");
+
+            if (MyCookie == false)
+            {
+                return View("index");
+            }
+
+            HttpCookie aCookie = Request.Cookies["HIWSSettings"];
+            List<string> somelist = new LogOnController().GenerateMenuForSession(aCookie["SessionGui"]);
+            if (somelist != null)
+            {
+                StringBuilder astring = new StringBuilder();
+                foreach (string buttonString in somelist)
+                {
+                    astring.Append(buttonString);
+                }
+
+                ViewBag.MenuHtml = astring.ToString();
+            }
+            #endregion
+            //End Repetition 
+
+            return View();
+        }
+        public JsonResult RetrieveHeaderAdvertCarouselData()
+        {
+            var obj = "";
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -10,42 +10,16 @@ ViewBag.Title = "Reports";
 
 }
 
+<h2>@ViewBag.Title</h2>
+
 <img src="~/Content/Images/firefox.jpg" />
 If you wish to download any of these reports to Excel please use Firefox as it allows the creation of larger Excel files, if you do not have Firefox installed on your PC 
 please email <a href="mailto:it@hochanda.com?Subject=Firefox%20Installation%20Required" target="_top">it@hochanda.com</a> alternatively call extension 6180 or 6181
 
-
-<h2>Reports by department</h2>
-<div id="DivContainer1" >
-    <h3>Buyers Reports</h3>
-    <div id="Div1"></div>
-</div>
-<br />
-<br />
-<div id="DivContainer2">
-    <h3>Finance Reports</h3>
-    <div id="Div2"></div>
-</div>
-<br />
-<br />
-<div id="DivContainer3">
-    <h3>Directors Reports</h3>
-    <div id="Div3"></div>
-</div>
-<br />
-<br />
-<div id="DivContainer4">
-    <h3>Curstomers Reports</h3>
-    <div id="Div4"></div>
-</div>
-<br />
-<br />
-<div id="DivContainer5">
-    <h3>Marketing Reports</h3>
-    <div id="Div5"></div>
-</div>
-
-
-@section scripts {
-    @Scripts.Render("~/Content/Scripts/ReportsIndex.js")
+<h3>Please Select a Department</h3>
+@using (Html.BeginForm("ReportsByDepartment", "Reporting"))
+{
+    @Html.DropDownList("ReportsAvailable")
+    
+    <input class="button" id="submit LogInButton" type="submit" value="Go to Reports" />
 }
