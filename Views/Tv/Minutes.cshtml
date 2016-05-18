@@ -52,30 +52,36 @@
 
 <div id="EditArea" class="HiddenDiv">
     @using (Html.BeginForm("Action", "Tv"))
-{
-    <div class="HiddenDiv">
-        @Html.TextBox("Date")
-        @Html.TextBox("Hour")
-        @Html.TextBox("Total")
-        @Html.TextBox("ShowName")
-        @Html.TextBox("Presenter")
-        @Html.TextBox("Producer")
-        @Html.TextBox("Gui")
-    </div>
-        <b>Show Name:</b>
-        <div id="ShowNameDisplay"></div>
-        <b>Total Sales for Hour: </b>
-        <div id="ShowSales"></div>
-        <b>Producer Name:</b><br />
-        @Html.DropDownList("ActiveProducers")<br />
-        <b>Presenter Name:</b><br />
-        @Html.DropDownList("ActivePresenters")<br />
-        <b>Director Name:</b><br />
-        @Html.TextBox("Director")<br />
-        <b>Floor Name:</b><br />
-        @Html.TextBox("Floor")<br />
-        <b>Guest Name:</b><br />
-        @Html.TextBox("Guest")<br />
+    {
+        <div class="HiddenDiv">
+            @Html.TextBox("Date")
+            @Html.TextBox("Hour")
+            @Html.TextBox("Total")
+            @Html.TextBox("ShowName")
+            @Html.TextBox("Presenter")
+            @Html.TextBox("Producer")
+            @Html.TextBox("Gui")
+        </div>
+       <div class="show_details">
+           <h3>SHOW DETAILS</h3>
+           <div class="details_pos">
+               <b>Show Name:</b>
+               <div id="ShowNameDisplay"></div>
+               <b>Total Sales for Hour: </b>
+               <div id="ShowSales"></div>
+               <b>Producer Name:</b><br />
+               @Html.DropDownList("ActiveProducers")<br />
+               <b>Presenter Name:</b><br />
+               @Html.DropDownList("ActivePresenters")<br />
+               <b>Director Name:</b><br />
+               @Html.TextBox("Director")<br />
+               <b>Floor Name:</b><br />
+               @Html.TextBox("Floor")<br />
+               <b>Guest Name:</b><br />
+               @Html.TextBox("Guest")<br /><br />
+           </div>
+        </div>
+
         <b>Producer Notes</b><br />
         @Html.TextArea("ProducerNotes")<br />
         <b>Director Notes</b><br />
@@ -84,9 +90,12 @@
         @Html.TextArea("FloorNotes")<br />
         <b>Going Forward</b><br />
         @Html.TextArea("ForwardNotes")<br />
-    <input type="submit" id="SaveNotesForm" name="SaveNotesForm" value="Save" />
-    <input type="submit" id="SaveMinutesAndSend" name="SaveMinutesAndSend" value="Save And Send" onclick="clicked(event)" />
-}
+
+        <div id="dualbtn_position">
+            <input class="generateButton generateButton_dualbtn" type="submit" id="SaveNotesForm" class="generateButton_dualbtn" name="SaveNotesForm" value="Save" />
+            <input class="generateButton generateButton_dualbtn" type="submit" id="SaveMinutesAndSend" class=".generateButton_dualbtn" name="SaveMinutesAndSend" value="Save And Send" onclick="clicked(event)" />
+        </div>
+    }
 </div>
 
 
