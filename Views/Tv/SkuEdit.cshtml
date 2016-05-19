@@ -17,25 +17,25 @@ SKU:
 <div id="SkuInfoDiv" class="HiddenDiv">
 @using (Html.BeginForm("SaveDataForSku", "Tv"))
 {
-    <div>
-        <input class="Hidden" name="ProductId" id="ProductId"/>
+    <div class="sku_edit_form">
+        <input class="Hidden" name="ProductId" id="ProductId" />
         <br />
-        TV Description:<br />
-        <input type="text" id="Description" name="Description" class="skueditdescription"/>
+        <b>TV Description:</b><br />
+        <input type="text" id="Description" name="Description" class="skueditdescription" />
         <br />
-        Web Text:<br />
+        <b>Web Text:</b><br />
         <textarea id="WebText" name="WebText" rows="5" cols="70"></textarea>
         <br />
-        Producer Notes:<br />
+        <b>Producer Notes:</b><br />
         <textarea id="ProducerNotesSku" name="ProducerNotesSku" rows="5" cols="70"></textarea>
         <br />
-        Buyers Notes:<br />
+        <b>Buyers Notes:</b><br />
         <textarea id="BuyerNotes" name="BuyerNotes" rows="5" cols="70"></textarea>
         <br />
-        
+
         <div id="IsActive"></div>@*<input type="checkbox" id="IsActiveCheckBox" class="Hidden PermisionCheckbox" value="Active">
 
-        <input type="number" name="IsActiveCheckBoxValue" id="IsActiveCheckBoxValue" class="Hidden"/>*@
+            <input type="number" name="IsActiveCheckBoxValue" id="IsActiveCheckBoxValue" class="Hidden"/>*@
         <br />
         <h3>Variations:</h3><br />
         <div id="VariationDiv">
@@ -45,7 +45,9 @@ SKU:
         @*<button class="generateButton" id="GenerateButton" onclick="SaveSkuData()">Save Sku Data</button>*@
         <div id="LastModified"></div>
         <br />
-        <input type="checkbox" id="toggle" /><span>Please confirm you wish to save these details</span>
+        <div class="check_box_section">
+            <input type="checkbox" id="toggle" /><span>Please confirm you wish to save these details</span>
+        </div>
         <br />
         <br />
         <input class="generateButton" type="submit" id="SaveSkuForm" disabled="disabled" value="Save Changes" />
