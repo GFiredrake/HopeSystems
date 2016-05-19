@@ -990,12 +990,20 @@ input.dateInput  {
 
    /*------- :END: MINUTES -------*/
 
+    body {
+    font-size: 16px;
+    }
+
    /* ########### :END: JEROME CSS ########### */
 
 
 @media (min-width: 520px) {
 
      /* ########### JEROME CSS ########### */
+
+     body {
+    font-size: 12px;
+    }
 
      /*------- PROMOTIONAL FREEDOM P&P SAVINGS -------*/  
 
