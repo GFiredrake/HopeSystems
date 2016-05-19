@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternalWebSystems.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -413,9 +414,63 @@ namespace InternalWebSystems.Controllers
         }
         public JsonResult RetrieveHeaderAdvertCarouselData()
         {
-            var obj = "";
+            List<HeaderAdvertCarouselModel> obj = new List<HeaderAdvertCarouselModel>();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_CMS_GetHeaderAdvertCaroselData"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Connection = connection;
+
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        HeaderAdvertCarouselModel newmodal = new HeaderAdvertCarouselModel();
+                        newmodal.carouselid = myReader["carouselid"].ToString();
+                        newmodal.imageurl = myReader["imageurl"].ToString();
+                        newmodal.alttext = myReader["alttext"].ToString();
+                        newmodal.imagelinkurl = myReader["imagelinkurl"].ToString();
+                        newmodal.displayorder = myReader["displayorder"].ToString();
+                        newmodal.active = myReader["active"].ToString();
+                        newmodal.displaydate_start = myReader["displaydate_start"].ToString();
+                        newmodal.displaydate_end = myReader["displaydate_end"].ToString();
+                        obj.Add(newmodal);
+
+                    }
+
+                    connection.Close();
+                }
+            }
 
             return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveHeaderAdvertCarouselData(string Id, string AltText, string DisplayOrder, string StartDate, string EndDate)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_CMS_SaveSpecificHeaderAdvertCaroselData"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Id", Id);
+                    command.Parameters.AddWithValue("@AltText", AltText);
+                    command.Parameters.AddWithValue("@DisplayOrder", DisplayOrder);
+                    command.Parameters.AddWithValue("@StartDate", StartDate);
+                    command.Parameters.AddWithValue("@EndDate", EndDate);
+                    command.Connection = connection;
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
         }
     }
 }

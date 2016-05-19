@@ -163,6 +163,7 @@
     <Compile Include="Controllers\CMSController.cs" />
     <Compile Include="Controllers\CustomerServiceController.cs" />
     <Compile Include="Controllers\OverviewController.cs" />
+    <Compile Include="Models\HeaderAdvertCarouselmodel.cs" />
     <Compile Include="Models\AvailableReportModel.cs" />
     <Compile Include="Models\SkuStockReport.cs" />
     <Compile Include="Models\OdsReport.cs" />
