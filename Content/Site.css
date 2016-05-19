@@ -805,6 +805,17 @@ input.dateInput  {
     width: 100%;
    }
 
+           /* unvisited link */
+    a {
+    color:  #A01D5D;
+    }
+
+    /* mouse over link */
+    a:hover {
+    color: #ed137d;
+    }
+
+
      /*------- FLEXIBUY REPORT -------*/  
 
     #startDate {
@@ -971,6 +982,7 @@ input.dateInput  {
     color: #fff;
     max-width: 320px;
     padding: 2px;
+    margin-bottom: 10px;
     }
 
     .details_pos {
@@ -979,12 +991,78 @@ input.dateInput  {
 
    /*------- :END: MINUTES -------*/
 
+    body {
+    font-size: 16px;
+    }
+
+    /*------- RandomOrderGenerator -------*/
+
+    input#StartDate,
+    input#EndDate  {
+    margin-right: 5px;
+    height: 30px !important;
+    width: 100%;
+    max-width: 297px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background-image: url("https://www.hochanda.com/Styles/Images/product_list_icons.png") !important;
+    background-position: right !important;
+    background-position-y: -284px !important;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    }
+
+    #SkuInput {
+    width: 291px;
+    height: 21px;
+    font-size: 18px;
+    height: 30px !important;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    margin-top: 20px;
+   }
+
+   /*------- :END: RandomOrderGenerator -------*/
+
+   /*------- SkuEdit -------*/
+    
+   #Description,
+   #WebText,
+   #ProducerNotesSku,
+   #BuyerNotes {
+    width: 98%;
+    padding: 2px;
+    margin-bottom: 20px;
+   }
+
+   #WebText,
+   #ProducerNotesSku,
+   #BuyerNotes {
+    height: 150px;
+   }
+
+   .check_box_section {
+    font-weight: bolder;
+    border: 1px solid #ed137d;
+    padding: 5px;
+    max-width: 320px
+   }
+
+
+   /*------- :END: SkuEdit -------*/
+
    /* ########### :END: JEROME CSS ########### */
 
 
 @media (min-width: 520px) {
 
      /* ########### JEROME CSS ########### */
+
+     body {
+    font-size: 14px;
+    }
 
      /*------- PROMOTIONAL FREEDOM P&P SAVINGS -------*/  
 
@@ -1056,8 +1134,6 @@ input.dateInput  {
     margin-left: 3%;
     margin-bottom: 30px;
     }
-
-
 
     #DateDiv {
     width: 100%;
@@ -1270,7 +1346,12 @@ input.dateInput  {
 }
 
 .green {
-    color:#007c0e
+    color: #fff;
+    font-weight: bold;
+    background: #007c0e;
+    width: 100%;
+    max-width: 120px;
+    padding: 2px;
 }
 
 .skueditdescription{
