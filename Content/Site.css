@@ -805,6 +805,17 @@ input.dateInput  {
     width: 100%;
    }
 
+           /* unvisited link */
+    a {
+    color:  #A01D5D;
+    }
+
+    /* mouse over link */
+    a:hover {
+    color: #ed137d;
+    }
+
+
      /*------- FLEXIBUY REPORT -------*/  
 
     #startDate {
@@ -1056,18 +1067,6 @@ input.dateInput  {
     margin-left: 3%;
     margin-bottom: 30px;
     }
-
-
-    /* unvisited link */
-    a {
-    color:  #A01D5D;
-    }
-
-    /* mouse over link */
-    a:hover {
-    color: #ed137d;
-    }
-
 
     #DateDiv {
     width: 100%;
