@@ -1058,6 +1058,16 @@ input.dateInput  {
     }
 
 
+    /* unvisited link */
+    a {
+    color:  #A01D5D;
+    }
+
+    /* mouse over link */
+    a:hover {
+    color: #ed137d;
+    }
+
 
     #DateDiv {
     width: 100%;
