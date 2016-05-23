@@ -472,5 +472,10 @@ namespace InternalWebSystems.Controllers
 
             return Json("success", JsonRequestBehavior.AllowGet);
         }
+
+        public void SaveNewAdvertCarouselData()
+        {
+            var pause = 1;
+        }
     }
 }
