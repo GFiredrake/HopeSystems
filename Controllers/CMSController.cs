@@ -473,9 +473,34 @@ namespace InternalWebSystems.Controllers
             return Json("success", JsonRequestBehavior.AllowGet);
         }
 
-        public void SaveNewAdvertCarouselData()
+        public JsonResult SaveNewAdvertCarouselData(string altText, string displayOrder, string startDate, string endDate)
         {
+
             var pause = 1;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_CMS_SaveNewHeaderAdvertCaroselData"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@ImageUrl", "https://www.hoch.media/elements/header-adverts/no-image.jpg");
+                    command.Parameters.AddWithValue("@AltText", altText);
+                    command.Parameters.AddWithValue("@ImageLinkUrl", "/");
+                    command.Parameters.AddWithValue("@DisplayOrder", displayOrder);
+                    command.Parameters.AddWithValue("@Active", "1");
+                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
+                    command.Connection = connection;
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+
+            return Json("success", JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -76,8 +76,9 @@
         //Freedom Members
         var FreedomMembersCount = 2;
         var FreedomMembersDynamicData = [];
-        FreedomMembersDynamicData[0] = { value: data[8], color: ColourList[0], highlight: HighLightList[0], label: "DPD Members - " + Math.round(((parseInt(data[8]) / total4) * 100) * 10) / 10 + '%' }
-        FreedomMembersDynamicData[1] = { value: data[9], color: ColourList[1], highlight: HighLightList[1], label: "Basic Members - " + Math.round(((parseInt(data[9]) / total4) * 100) * 10) / 10 + '%' }
+        var total5 = parseInt(data[8]) + parseInt(data[9]);
+        FreedomMembersDynamicData[0] = { value: data[8], color: ColourList[0], highlight: HighLightList[0], label: "DPD Members - " + Math.round(((parseInt(data[8]) / total5) * 100) * 10) / 10 + '%' }
+        FreedomMembersDynamicData[1] = { value: data[9], color: ColourList[1], highlight: HighLightList[1], label: "Basic Members - " + Math.round(((parseInt(data[9]) / total5) * 100) * 10) / 10 + '%' }
 
         var FreedomMembersOptions = {
             segmentShowStroke: false,

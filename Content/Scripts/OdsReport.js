@@ -81,7 +81,7 @@ function GenerateVariationInfo() {
             var i = 0
             while (i < length)
             {
-                $('#variationDiv').append('Variation Sku: ' + data[i].Variable1.toString() + ' - Variation Description: ' + data[i].Variable2.toString() + ' - Variation in Stock: ' + data[i].Variable3.toString() + '<br />')
+                $('#variationDiv').append('Variation SKU: ' + data[i].Variable1.toString() + ' <br/> Variation Description: ' + data[i].Variable2.toString() + ' <br/> Variation in Stock: ' + data[i].Variable3.toString() + '<br /><br/>')
                 i++;
             }
 

@@ -26,7 +26,29 @@
                                          '</div>')
                 i++;
             }
+            var dropdownNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+            var amountOfUsedNumbers = $('#dropdownNumbers').text().split(',').length
+            var i = 0;
+
+            while (i < amountOfUsedNumbers) {
+                    var index = dropdownNumbers.indexOf(parseInt($('#dropdownNumbers').text().split(',')[i]))
+                    if (index > -1) {
+                        dropdownNumbers.splice(index, 1);
+                    }
+                    i++;
+            }
+            var select2 = $('<select id="NewViewOrderSelect" />');
+
+            $('<option />', { value: 0, text: "Please Select One" }).appendTo(select2);
+
+            for (var val in dropdownNumbers) {
+                $('<option />', { value: dropdownNumbers[val], text: dropdownNumbers[val] }).appendTo(select2);
+            }
+
+            select2.appendTo('#NewViewOrderDiv');
+
         })
+
 
         .fail(function (jqXHR, textStatus, errorThrown) {
 
@@ -60,6 +82,7 @@ function EditSpecificDiv(carouselid) {
     var pause = 1;
 
     var select = $('<select id="ViewOrderSelect" />');
+    
 
     for (var val in dropdownNumbers) {
         $('<option />', { value: dropdownNumbers[val], text: dropdownNumbers[val] }).appendTo(select);
@@ -81,6 +104,7 @@ function EditSpecificDiv(carouselid) {
                              '</div>')
 
     select.appendTo('#ViewOrderDiv');
+    
     $('#ViewOrderSelect option[value="' + displayorder + '"]').attr("selected", true);
 }
 
@@ -105,6 +129,42 @@ function SaveSpecificDiv(carouselid) {
 
 function SaveNewCarouselItem() {
     var pause = 1;
+
+    if ($('#NewAltText').val() == "")
+    {
+        return false;
+    }
+    if ($('#NewViewOrderSelect').val() == "0") {
+        return false;
+    }
+    if ($('#NewStartDate').val() == "") {
+        return false;
+    }
+    if ($('#NewEndDate').val() == "") {
+        return false;
+    }
+    if ($('#NewStartTime').val() == "") {
+        return false;
+    }
+    if ($('#NewEndTime').val() == "") {
+        return false;
+    }
+
+    var fullStartDate = $('#NewStartDate').val() + " " + $('#NewStartTime').val() + ":00";
+    var fullEndDate = $('#NewEndDate').val() + " " + $('#NewEndTime').val() + ":00";
+
+    $.ajax({
+        type: "Post",
+        url: "/CMS/SaveNewAdvertCarouselData",
+        data: { 'altText': $('#NewAltText').val(), 'displayOrder': $('#NewViewOrderSelect').val(), 'startDate': $('#NewStartDate').val(), 'endDate': $('#NewEndDate').val() },
+        dataType: "json"
+    })
+    .done(function (data) {
+        if (data = "success") {
+            document.location.reload()
+        }
+
+    })
 }
 
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
@@ -112,24 +172,6 @@ function SaveNewCarouselItem() {
 
 var checkForm = function (e) {
     var form = (e.target) ? e.target : e.srcElement;
-    if (form.name.value == "") {
-        alert("Please enter your Name");
-        form.name.focus();
-        e.preventDefault ? e.preventDefault() : e.returnValue = false;
-        return;
-    }
-    if (form.email.value == "") {
-        alert("Please enter a valid Email address");
-        form.email.focus();
-        e.preventDefault ? e.preventDefault() : e.returnValue = false;
-        return;
-    }
-    if (form.message.value == "") {
-        alert("Please enter your comment or question in the Message box");
-        form.message.focus();
-        e.preventDefault ? e.preventDefault() : e.returnValue = false;
-        return;
-    }
 };
 
 var modal_init = function () {

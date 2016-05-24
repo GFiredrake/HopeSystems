@@ -13,32 +13,34 @@
 
         <p>Complete the form below to send an email:</p>
 
-        <form id="modal_feedback" method="POST" action="SaveNewAdvertCarouselData" accept-charset="UTF-8">
+        <form id="modal_feedback" method="POST" action="#" accept-charset="UTF-8">
             <p>
                 <label>
-                    Alt text<br>
-                    <input type="text" size="48" name="subject" value="">
+                    Alt text <strong>*</strong><br>
+                    <input type="text" size="48" name="AltText" value="" id="NewAltText">
                 </label>
             </p>
             <p>
                 <label>
-                    Display Order<br>
-                    <input type="text" size="48" name="subject" value="">
+                    Display Order <strong>*</strong><br>
                 </label>
+                <div id="NewViewOrderDiv"></div>
             </p>
             <p>
                 <label>
                     Display Start Date<br>
-                    <input type="text" size="48" name="subject" value="">
+                    <input type="date"  name="StartDate" value="" id="NewStartDate">
+                    <input type="time" name="StartTime" value="" id="NewStartTime">
                 </label>
             </p>
             <p>
                 <label>
-                    Display End Date <strong>*</strong><br>
-                    <input type="text" size="48" name="subject" value="">
+                    Display End Date <br>
+                    <input type="date" name="EndDate" value="" id="NewEndDate">
+                    <input type="time" name="EndTime" value="" id="NewEndTime">
                 </label>
             </p>
-            <p><input type="submit" name="feedbackForm" value="Save"></p>
+            <p><input type="button" value="Save" onclick="SaveNewCarouselItem()"></p>
         </form>
 
     </div> <!-- #modal_window -->
