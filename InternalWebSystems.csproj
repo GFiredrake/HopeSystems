@@ -163,6 +163,8 @@
     <Compile Include="Controllers\CMSController.cs" />
     <Compile Include="Controllers\CustomerServiceController.cs" />
     <Compile Include="Controllers\OverviewController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Models\SkuVariantModel.cs" />
     <Compile Include="Models\HeaderAdvertCarouselmodel.cs" />
     <Compile Include="Models\AvailableReportModel.cs" />
     <Compile Include="Models\SkuStockReport.cs" />
@@ -210,6 +212,7 @@
     <Content Include="Content\Images\no-image.jpg" />
     <Content Include="Content\Images\Stormtrooper-Silohuette-Hot-Pink.png" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\Scripts\BuyerStockReport.js" />
     <Content Include="Content\Scripts\Dashboard.js" />
     <Content Include="Content\Scripts\HeaderAdvertCarousel.js" />
     <Content Include="Content\Scripts\jquery-ui.js" />
@@ -220,9 +223,11 @@
     <Content Include="Content\Scripts\OdsReport.js" />
     <Content Include="Content\Scripts\Overview.js" />
     <Content Include="Content\Scripts\pol.js" />
+    <Content Include="Content\Scripts\ProductIndex.js" />
     <Content Include="Content\Scripts\RandomOrderGeneration.js" />
     <Content Include="Content\Scripts\ReportsIndex.js" />
     <Content Include="Content\Scripts\SkuEdit.js" />
+    <Content Include="Content\Scripts\SkuStockLevelEdit.js" />
     <Content Include="Content\Scripts\SkuStockReport.js" />
     <Content Include="Content\Scripts\StockExpieryReport.js" />
     <Content Include="Content\Scripts\ProductRulesReport.js" />
@@ -385,6 +390,8 @@
     <Content Include="Views\Reporting\SkuStockReport.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
     <Content Include="Views\CMS\HeaderAdvertCarousel.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\SkuStockLevelEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

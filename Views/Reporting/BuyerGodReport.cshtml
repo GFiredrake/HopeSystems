@@ -14,7 +14,7 @@
         </div>
         <div id="SelectionDiv">
             <div class="InvisibleDiv" id="SkuDiv">
-                <input type="number" name="skuInput" id="SkuInput" max="999999">
+                <input type="number" name="skuInput" id="SkuInput" max="999999" value="508358">
             </div>
             <div class="HiddenDiv" id="SupplierDiv">
                 @Html.DropDownList("SuppliersAvailable")
@@ -68,5 +68,5 @@
 }
 
 @section scripts {
-    @Scripts.Render("~/Content/Scripts/Reports.js")
+    @Scripts.Render("~/Content/Scripts/BuyerStockReport.js")
 }

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Product Admin Index";
+}
+
+<h2>Product Admin Index</h2>
+
+<input id="PermissionLevel" value="@ViewBag.Permision" class="Hidden" />
+
+@Html.ActionLink("Edit SKU Stock Level", "SkuStockLevelEdit", "Product", null, new { @class = "generateButton Hidden", @id = "SkuStockLevelEditButton" })
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/ProductIndex.js")
+}

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Sku Stock Level Edit";
+}
+
+<h2>Sku Stock Level Edit</h2>
+
+<p>Please Enter a sku.</p>
+SKU:
+<input type="number" name="skuInput" id="SkuInput" max="999999" MaxLength="6" pattern="[0-9]*" value="508358"><br>
+<div id="ErrorDiv" class="errorDiv HiddenDiv">That is not a valid SKU length.</div>
+<div id="SkuErrorDiv" class="errorDiv HiddenDiv">That is not a valid SKU.</div>
+<br/>
+<button class="generateButton" id="GenerateButton" onclick="GetSkuVariationData()">Continue</button>
+<br />
+<br />
+<br />
+<br />
+
+<div id="VariationDiv">
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Content/Scripts/SkuStockLevelEdit.js")
+}

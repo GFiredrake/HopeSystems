@@ -5,6 +5,7 @@
 
 //Done
 function GetSkuData() {
+    $('#hiddensku').val($('#SkuInput').val())
     $('#ErrorDiv').addClass('HiddenDiv')
     $('#SkuErrorDiv').addClass('HiddenDiv')
     if ($('#SkuInput').val().length == 6)

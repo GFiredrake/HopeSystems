@@ -273,55 +273,6 @@ namespace InternalWebSystems.Controllers
 
             return View();
         }
-        public JsonResult GenerateBuyerGodGetSkus(string Variable, int IsSku, string Start, string End)
-        {
-            List<int> SkusToGenerate = new List<int>();
-
-            if (IsSku == 1)
-            {
-                SkusToGenerate.Add(Convert.ToInt32(Variable));
-            }
-            if (IsSku == 2)
-            {
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GetSku_By_SupplierId"))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@Variable", Variable);
-                        command.Connection = connection;
-                        connection.Open();
-                        SqlDataReader myReader = command.ExecuteReader();
-                        while (myReader.Read())
-                        {
-                            SkusToGenerate.Add(Convert.ToInt32(myReader["parentproductsku"].ToString()));
-                        }
-                        connection.Close();
-                    }
-                }
-            }
-            //if (IsSku == 3)
-            //{
-            //    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            //    {
-            //        using (SqlCommand command = new SqlCommand("SPU_HT_Reports_GetSku_All"))
-            //        {
-            //            command.CommandType = CommandType.StoredProcedure;
-            //            command.Connection = connection;
-            //            connection.Open();
-            //            SqlDataReader myReader = command.ExecuteReader();
-            //            while (myReader.Read())
-            //            {
-            //                SkusToGenerate.Add(Convert.ToInt32(myReader["parentproductsku"].ToString()));
-            //            }
-            //            connection.Close();
-            //        }
-            //    }
-            //}
-
-
-            return Json(SkusToGenerate, JsonRequestBehavior.AllowGet);
-        }
         public JsonResult GenerateBuyerGodFullReportSuplierList()
         {
             List<int> SupplierList = new List<int>();
@@ -421,7 +372,83 @@ namespace InternalWebSystems.Controllers
 
             return Json(GodReportItems, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GenerateBuyerGodGetProductFromSupplier(string Variable, string Start, string End)
+        {
+            DateTime now = DateTime.Now;
+            DateTime endEntered = Convert.ToDateTime(End.Split('-')[2] + "/" + End.Split('-')[1] + "/" + End.Split('-')[0]);
 
+            DateTime ts = Convert.ToDateTime(Start.Split('-')[2] + "/" + Start.Split('-')[1] + "/" + Start.Split('-')[0] + " 00:00:00");
+            DateTime te = new DateTime();
+
+            if (now.Date == endEntered.Date)
+            {
+                te = now;
+            }
+            else
+            {
+                te = (Convert.ToDateTime(End.Split('-')[2] + "/" + End.Split('-')[1] + "/" + End.Split('-')[0] + " 00:00:00")).AddDays(1);
+
+            }
+
+            List<BuyerGodModel> GodReportItems = new List<BuyerGodModel>();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_BuyerGod_GetReportDataBySuplier"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    SqlParameter startDateTimeParam = new SqlParameter("@Start", SqlDbType.DateTime);
+                    startDateTimeParam.Value = ts;
+
+                    SqlParameter endDateTimeParam = new SqlParameter("@End", SqlDbType.DateTime);
+                    endDateTimeParam.Value = te;
+
+                    command.Parameters.AddWithValue("@Variable", Variable);
+                    command.Parameters.Add(startDateTimeParam);
+                    command.Parameters.Add(endDateTimeParam);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        BuyerGodModel ReportItem = new BuyerGodModel();
+
+                        ReportItem.Sku = myReader["SKU"].ToString();
+                        ReportItem.QtyFree = myReader["QtyFree"].ToString();
+                        ReportItem.AwaitingDispatch = myReader["awaitingdispatch"].ToString();
+                        ReportItem.TotalQtyInBins = myReader["totalqtyinbins"].ToString();
+                        ReportItem.ExpDate = myReader["stockhelduntil"].ToString();
+                        ReportItem.Supplier = myReader["suppliername"].ToString();
+                        ReportItem.Buyer = myReader["Buyer"].ToString();
+                        ReportItem.QtySold = myReader["qtysold"].ToString();
+                        ReportItem.CostPrice = myReader["costprice"].ToString();
+                        ReportItem.SellingPrice = myReader["SellingPrice"].ToString();
+                        ReportItem.MarginPercent = myReader["Margin"].ToString();
+                        ReportItem.ExVatSales = myReader["ExVatSales"].ToString();
+                        ReportItem.ExVatProfit = myReader["ExVatProfit"].ToString();
+                        ReportItem.ExVatSalesAllTime = myReader["ExVatSalesAllTime"].ToString();
+                        ReportItem.ExVatProfitAllTime = myReader["ExVatProfitAllTime"].ToString();
+                        ReportItem.LineValue = myReader["LineValue"].ToString();
+                        ReportItem.LineRetailValue = myReader["LineRetailValue"].ToString();
+                        ReportItem.StockAge = myReader["StockAge"].ToString();
+                        ReportItem.Description = myReader["tvdescription"].ToString();
+                        ReportItem.VariationName = myReader["variationname"].ToString();
+                        ReportItem.PoundSlashMins = myReader["£/Min"].ToString();
+                        ReportItem.PoundsPerMin = myReader["PPM"].ToString();
+                        ReportItem.returnPercent = myReader["Returns"].ToString();
+                        ReportItem.NumReturned = myReader["NumReturns"].ToString();
+
+                        GodReportItems.Add(ReportItem);
+                    }
+                    connection.Close();
+                }
+            }
+
+
+            return Json(GodReportItems, JsonRequestBehavior.AllowGet);
+        }
+        
         //Flexi Buy Report
         public ActionResult FlexiPayReport()
         {

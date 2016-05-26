@@ -198,7 +198,7 @@ namespace InternalWebSystems.Controllers
         public ActionResult SaveDataForSku(FormCollection collection)
         {
             int number = collection.Count;
-            int Vs = 5;
+            int Vs = 6;
             var cookieValue = "0-0";
             var myCookie = Request.Cookies["HIWSSettings"];
             if (myCookie != null)
@@ -256,7 +256,49 @@ namespace InternalWebSystems.Controllers
                 
                 
             }
+
+            SendEmailToAlertChange(collection[5].ToString(), cookieValue.Split('=')[1]);
+
+            
+
+
+
             return RedirectToAction("SkuEdit", "Tv");
+        }
+
+        private void SendEmailToAlertChange(string Sku, string Guid)
+        {
+            var firstName = "";
+            var surName = "";
+
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("[dbo].[SPU_HT_Dashboard_Overview]"))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Variable", Guid);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        firstName = myReader["firstname"].ToString();
+                        surName = myReader["surname"].ToString();
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            var myMessage = new SendGrid.SendGridMessage();
+            myMessage.AddTo("robin.windon@hochanda.com");
+            myMessage.From = new MailAddress("hope.tools@hochanda.com", "Hope Tools");
+            myMessage.Subject = "An SKU has been edited in Hope.Tools";
+            myMessage.Text = "Product SKU:" + Sku + " Was modified by " + firstName + " " + surName + ", on " + DateTime.Now.ToString("M/d/yyyy") + " at " + DateTime.Now.ToString("h:mm:ss tt");
+            var transportWeb = new Web(ConfigurationManager.AppSettings["SendGridApi"].ToString());
+            transportWeb.DeliverAsync(myMessage);
         }
 
         //Minuets

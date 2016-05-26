@@ -403,6 +403,22 @@ namespace InternalWebSystems.Controllers
                         }
                         //tv description
                         thiscell.Phrase = new Phrase(ds.Tables[0].Rows[x]["tvdescription"].ToString(), myHelvetica_12_b);
+
+                        //if (ds.Tables[0].Rows[x]["activeprice"].ToString() == "1")
+                        //{
+                        //    thiscell.Phrase = new Phrase(ds.Tables[0].Rows[x]["tvdescription"].ToString() + Constants.vbLf + Constants.vbLf + "INTRO PRICE - SAVING " + system_currencysymbol + Strings.FormatNumber(ds.Tables(0).Rows(x)("pricesaving"), 2), myHelvetica_12_b);
+                        //}
+                        //else if (ds.Tables[0].Rows[x]["activeprice"].ToString() == "2")
+                        //{
+                        //    thiscell.Phrase = new Phrase(ds.Tables[0].Rows[x]["tvdescription"].ToString() + Constants.vbLf + Constants.vbLf + "PROMO PRICE - SAVING " + system_currencysymbol + Strings.FormatNumber(ds.Tables(0).Rows(x)("pricesaving"), 2), myHelvetica_12_b);
+                        //}
+                        //else
+                        //{
+                        //    thiscell.Phrase = new Phrase(ds.Tables[0].Rows[x]["tvdescription"].ToString(), myHelvetica_12_b);
+                        //}
+                        //table3.AddCell(thiscell);
+
+
                         if (ds.Tables[0].Rows[x]["runningorder"].ToString() != "")
                         {
                             table3.AddCell(thiscell);
