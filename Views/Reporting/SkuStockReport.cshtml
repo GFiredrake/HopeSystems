@@ -5,8 +5,15 @@
 <h2>Sku Stock Report</h2>
 
 <div id="TableArea" class="HiddenDiv">
-    <table id="DisplayTable"></table>
-</div>
+
+    <div id="swipe_text_wrap">
+        <p class="swipe_text hide-desktop">&#8592;&nbsp;swipe the table below to view all content&nbsp;&#8594;</p>
+    </div>
+
+    <div id="table-scroll">
+        <table id="DisplayTable"></table>
+        </div>
+    </div>
 
 @section scripts {
     @Scripts.Render("~/Content/Scripts/SkuStockReport.js")
