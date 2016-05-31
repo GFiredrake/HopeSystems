@@ -35,7 +35,6 @@ function GenerateBuyerGodReport() {
     }
     if ($('input[name=Answer]:checked').val() == "B")
     {
-        alert("This is a Buyer Name Report")
         GenerateReportBySupplier()
     }
 

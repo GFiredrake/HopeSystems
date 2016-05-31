@@ -160,7 +160,7 @@ namespace InternalWebSystems.Controllers
             {
                 return RedirectToAction("Index", "Reporting");
             }
-            
+
 
             ViewBag.Title = "Reports";
             return View();
@@ -317,84 +317,8 @@ namespace InternalWebSystems.Controllers
             List<BuyerGodModel> GodReportItems = new List<BuyerGodModel>();
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("SPU_HT_Reports_BuyerGod"))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        SqlParameter startDateTimeParam = new SqlParameter("@Start", SqlDbType.DateTime);
-                        startDateTimeParam.Value = ts;
-
-                        SqlParameter endDateTimeParam = new SqlParameter("@End", SqlDbType.DateTime);
-                        endDateTimeParam.Value = te;
-
-                        command.Parameters.AddWithValue("@Variable", Variable);
-                        command.Parameters.Add(startDateTimeParam);
-                        command.Parameters.Add(endDateTimeParam);
-
-                        command.Connection = connection;
-                        connection.Open();
-                        SqlDataReader myReader = command.ExecuteReader();
-                        while (myReader.Read())
-                        {
-                            BuyerGodModel ReportItem = new BuyerGodModel();
-
-                            ReportItem.Sku = myReader["SKU"].ToString();
-                            ReportItem.QtyFree = myReader["QtyFree"].ToString();
-                            ReportItem.AwaitingDispatch = myReader["awaitingdispatch"].ToString();
-                            ReportItem.TotalQtyInBins = myReader["totalqtyinbins"].ToString();
-                            ReportItem.ExpDate = myReader["stockhelduntil"].ToString();
-                            ReportItem.Supplier = myReader["suppliername"].ToString();
-                            ReportItem.Buyer = myReader["Buyer"].ToString();
-                            ReportItem.QtySold = myReader["qtysold"].ToString();
-                            ReportItem.CostPrice = myReader["costprice"].ToString();
-                            ReportItem.SellingPrice = myReader["SellingPrice"].ToString();
-                            ReportItem.MarginPercent = myReader["Margin"].ToString();
-                            ReportItem.ExVatSales = myReader["ExVatSales"].ToString();
-                            ReportItem.ExVatProfit = myReader["ExVatProfit"].ToString();
-                            ReportItem.ExVatSalesAllTime = myReader["ExVatSalesAllTime"].ToString();
-                            ReportItem.ExVatProfitAllTime = myReader["ExVatProfitAllTime"].ToString();
-                            ReportItem.LineValue = myReader["LineValue"].ToString();
-                            ReportItem.LineRetailValue = myReader["LineRetailValue"].ToString();
-                            ReportItem.StockAge = myReader["StockAge"].ToString();
-                            ReportItem.Description = myReader["tvdescription"].ToString();
-                            ReportItem.VariationName = myReader["variationname"].ToString();
-                            ReportItem.PoundSlashMins = myReader["£/Min"].ToString();
-                            ReportItem.PoundsPerMin = myReader["PPM"].ToString();
-                            ReportItem.returnPercent = myReader["Returns"].ToString();
-                            ReportItem.NumReturned = myReader["NumReturns"].ToString();
-
-                            GodReportItems.Add(ReportItem);
-                        }
-                        connection.Close();
-                    }
-                }
-            
-
-            return Json(GodReportItems, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult GenerateBuyerGodGetProductFromSupplier(string Variable, string Start, string End)
-        {
-            DateTime now = DateTime.Now;
-            DateTime endEntered = Convert.ToDateTime(End.Split('-')[2] + "/" + End.Split('-')[1] + "/" + End.Split('-')[0]);
-
-            DateTime ts = Convert.ToDateTime(Start.Split('-')[2] + "/" + Start.Split('-')[1] + "/" + Start.Split('-')[0] + " 00:00:00");
-            DateTime te = new DateTime();
-
-            if (now.Date == endEntered.Date)
             {
-                te = now;
-            }
-            else
-            {
-                te = (Convert.ToDateTime(End.Split('-')[2] + "/" + End.Split('-')[1] + "/" + End.Split('-')[0] + " 00:00:00")).AddDays(1);
-
-            }
-
-            List<BuyerGodModel> GodReportItems = new List<BuyerGodModel>();
-
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_BuyerGod_GetReportDataBySuplier"))
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_BuyerGod"))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     SqlParameter startDateTimeParam = new SqlParameter("@Start", SqlDbType.DateTime);
@@ -448,7 +372,84 @@ namespace InternalWebSystems.Controllers
 
             return Json(GodReportItems, JsonRequestBehavior.AllowGet);
         }
-        
+        public JsonResult GenerateBuyerGodGetProductFromSupplier(string Variable, string Start, string End)
+        {
+            DateTime now = DateTime.Now;
+            DateTime endEntered = Convert.ToDateTime(End.Split('-')[2] + "/" + End.Split('-')[1] + "/" + End.Split('-')[0]);
+
+            DateTime ts = Convert.ToDateTime(Start.Split('-')[2] + "/" + Start.Split('-')[1] + "/" + Start.Split('-')[0] + " 00:00:00");
+            DateTime te = new DateTime();
+
+            if (now.Date == endEntered.Date)
+            {
+                te = now;
+            }
+            else
+            {
+                te = (Convert.ToDateTime(End.Split('-')[2] + "/" + End.Split('-')[1] + "/" + End.Split('-')[0] + " 00:00:00")).AddDays(1);
+
+            }
+
+            List<BuyerGodModel> GodReportItems = new List<BuyerGodModel>();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SPU_HT_Reports_BuyerGod_GetReportDataBySuplier"))
+                {
+                    command.CommandTimeout = 0;
+                    command.CommandType = CommandType.StoredProcedure;
+                    SqlParameter startDateTimeParam = new SqlParameter("@Start", SqlDbType.DateTime);
+                    startDateTimeParam.Value = ts;
+
+                    SqlParameter endDateTimeParam = new SqlParameter("@End", SqlDbType.DateTime);
+                    endDateTimeParam.Value = te;
+
+                    command.Parameters.AddWithValue("@SupplierId", Variable);
+                    command.Parameters.Add(startDateTimeParam);
+                    command.Parameters.Add(endDateTimeParam);
+
+                    command.Connection = connection;
+                    connection.Open();
+                    SqlDataReader myReader = command.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        BuyerGodModel ReportItem = new BuyerGodModel();
+
+                        ReportItem.Sku = myReader["SKU"].ToString();
+                        ReportItem.QtyFree = myReader["QtyFree"].ToString();
+                        ReportItem.AwaitingDispatch = myReader["awaitingdispatch"].ToString();
+                        ReportItem.TotalQtyInBins = myReader["totalqtyinbins"].ToString();
+                        ReportItem.ExpDate = myReader["stockhelduntil"].ToString();
+                        ReportItem.Supplier = myReader["suppliername"].ToString();
+                        ReportItem.Buyer = myReader["Buyer"].ToString();
+                        ReportItem.QtySold = myReader["qtysold"].ToString();
+                        ReportItem.CostPrice = myReader["costprice"].ToString();
+                        ReportItem.SellingPrice = myReader["SellingPrice"].ToString();
+                        ReportItem.MarginPercent = myReader["Margin"].ToString();
+                        ReportItem.ExVatSales = myReader["ExVatSales"].ToString();
+                        ReportItem.ExVatProfit = myReader["ExVatProfit"].ToString();
+                        ReportItem.ExVatSalesAllTime = myReader["ExVatSalesAllTime"].ToString();
+                        ReportItem.ExVatProfitAllTime = myReader["ExVatProfitAllTime"].ToString();
+                        ReportItem.LineValue = myReader["LineValue"].ToString();
+                        ReportItem.LineRetailValue = myReader["LineRetailValue"].ToString();
+                        ReportItem.StockAge = myReader["StockAge"].ToString();
+                        ReportItem.Description = myReader["tvdescription"].ToString();
+                        ReportItem.VariationName = myReader["variationname"].ToString();
+                        ReportItem.PoundSlashMins = myReader["£/Min"].ToString();
+                        ReportItem.PoundsPerMin = myReader["PPM"].ToString();
+                        ReportItem.returnPercent = myReader["Returns"].ToString();
+                        ReportItem.NumReturned = myReader["NumReturns"].ToString();
+
+                        GodReportItems.Add(ReportItem);
+                    }
+                    connection.Close();
+                }
+            }
+
+
+            return Json(GodReportItems, JsonRequestBehavior.AllowGet);
+        }
+
         //Flexi Buy Report
         public ActionResult FlexiPayReport()
         {
@@ -496,7 +497,7 @@ namespace InternalWebSystems.Controllers
                 i++;
                 startyear++;
             }
-            
+
 
             List<SelectListItem> Years = new List<SelectListItem>();
             Years.Add(new SelectListItem { Text = "...Select Year", Value = "0" });
@@ -506,7 +507,7 @@ namespace InternalWebSystems.Controllers
             }
 
             ViewBag.YearsAvailable = Years.OrderBy(c => c.Text).ToList();
-            
+
             return View();
         }
         public JsonResult GenerateFlexiBuyReport(int Year, int Month)
@@ -533,26 +534,26 @@ namespace InternalWebSystems.Controllers
                     while (myReader.Read())
                     {
                         FlexiBuyModel ReportItem = new FlexiBuyModel();
-                            ReportItem.orderdate = myReader["orderdate"].ToString();
-                            ReportItem.orderid = myReader["orderid"].ToString();
-                            ReportItem.customerid = myReader["customerid"].ToString();
-                            ReportItem.customername = myReader["customername"].ToString();
-                            ReportItem.itemid = myReader["itemid"].ToString();
-                            ReportItem.totalitem = myReader["totalitem"].ToString();
-                            ReportItem.totalexvat = myReader["totalexvat"].ToString();
-                            ReportItem.totalvat = myReader["totalvat"].ToString();
-                            ReportItem.totalpaid = myReader["totalpaid"].ToString();
-                            ReportItem.fmon1 = myReader["fmon1"].ToString();
-                            ReportItem.fmon2 = myReader["fmon2"].ToString();
-                            ReportItem.fmon3 = myReader["fmon3"].ToString();
-                            ReportItem.fmon4 = myReader["fmon4"].ToString();
-                            ReportItem.fmon5 = myReader["fmon5"].ToString();
-                            ReportItem.fmon6  = myReader["fmon6"].ToString();
-                            ReportItem.fmon7 = myReader["fmon7"].ToString();
-                            ReportItem.fmon8 = myReader["fmon8"].ToString();
-                            ReportItem.fmon9 = myReader["fmon9"].ToString();
-                            ReportItem.amountcomp = myReader["AmountComp"].ToString();
-                            ReportItem.tempcomp = myReader["TermComp"].ToString();
+                        ReportItem.orderdate = myReader["orderdate"].ToString();
+                        ReportItem.orderid = myReader["orderid"].ToString();
+                        ReportItem.customerid = myReader["customerid"].ToString();
+                        ReportItem.customername = myReader["customername"].ToString();
+                        ReportItem.itemid = myReader["itemid"].ToString();
+                        ReportItem.totalitem = myReader["totalitem"].ToString();
+                        ReportItem.totalexvat = myReader["totalexvat"].ToString();
+                        ReportItem.totalvat = myReader["totalvat"].ToString();
+                        ReportItem.totalpaid = myReader["totalpaid"].ToString();
+                        ReportItem.fmon1 = myReader["fmon1"].ToString();
+                        ReportItem.fmon2 = myReader["fmon2"].ToString();
+                        ReportItem.fmon3 = myReader["fmon3"].ToString();
+                        ReportItem.fmon4 = myReader["fmon4"].ToString();
+                        ReportItem.fmon5 = myReader["fmon5"].ToString();
+                        ReportItem.fmon6 = myReader["fmon6"].ToString();
+                        ReportItem.fmon7 = myReader["fmon7"].ToString();
+                        ReportItem.fmon8 = myReader["fmon8"].ToString();
+                        ReportItem.fmon9 = myReader["fmon9"].ToString();
+                        ReportItem.amountcomp = myReader["AmountComp"].ToString();
+                        ReportItem.tempcomp = myReader["TermComp"].ToString();
 
                         ReportItems.Add(ReportItem);
                     }
@@ -611,7 +612,7 @@ namespace InternalWebSystems.Controllers
             }
 
             ViewBag.CurrencyType = obj.OrderBy(c => c.Text).ToList();
-            
+
 
             return View();
         }
@@ -728,7 +729,7 @@ namespace InternalWebSystems.Controllers
             {
                 ViewBag.Currency = Request.QueryString["Currency"].ToString();
             }
-            
+
 
             return View();
         }
@@ -1039,14 +1040,21 @@ namespace InternalWebSystems.Controllers
                         {
                             obj2.Add(new PnpReportModel
                             {
-                                 FullName = myReader["Name"].ToString()
-                                ,Email = myReader["Email"].ToString()
-                                ,CustomerId = myReader["CustomerId"].ToString()
-                                ,TotalNumberOfOrdersInThreeMonths = myReader["TotalOfOrders"].ToString()
-                                ,PpMonth1IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth3"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth3Saving"].ToString() + "</span>)"
-                                ,PpMonth2IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth2"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth2Saving"].ToString() + "</span>)"
-                                ,PpMonth3IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth1"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth1Saving"].ToString() + "</span>)"
-                                ,TotalSavings = "<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["TotalSavings"].ToString() + "</span>"
+                                FullName = myReader["Name"].ToString()
+                                ,
+                                Email = myReader["Email"].ToString()
+                                ,
+                                CustomerId = myReader["CustomerId"].ToString()
+                                ,
+                                TotalNumberOfOrdersInThreeMonths = myReader["TotalOfOrders"].ToString()
+                                ,
+                                PpMonth1IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth3"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth3Saving"].ToString() + "</span>)"
+                                ,
+                                PpMonth2IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth2"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth2Saving"].ToString() + "</span>)"
+                                ,
+                                PpMonth3IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth1"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth1Saving"].ToString() + "</span>)"
+                                ,
+                                TotalSavings = "<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["TotalSavings"].ToString() + "</span>"
                             });
                         }
                         connection.Close();
@@ -1072,11 +1080,16 @@ namespace InternalWebSystems.Controllers
                             obj3.Add(new PnpReportModelOneMonth
                             {
                                 FullName = myReader["Name"].ToString()
-                                ,Email = myReader["Email"].ToString()
-                                ,CustomerId = myReader["CustomerId"].ToString()
-                                ,TotalNumberOfOrdersInThreeMonths = myReader["TotalOfOrders"].ToString()
-                                ,PpMonth1IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth1"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth1Saving"].ToString() + "</span>)"
-                                ,TotalSavings = "<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["TotalSavings"].ToString() + "</span>"
+                                ,
+                                Email = myReader["Email"].ToString()
+                                ,
+                                CustomerId = myReader["CustomerId"].ToString()
+                                ,
+                                TotalNumberOfOrdersInThreeMonths = myReader["TotalOfOrders"].ToString()
+                                ,
+                                PpMonth1IncSaving = "<span class=\"bold red\">" + myReader["currency"].ToString() + myReader["PpMonth1"].ToString() + "</span> (<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["PpMonth1Saving"].ToString() + "</span>)"
+                                ,
+                                TotalSavings = "<span class=\"bold green\">" + myReader["currency"].ToString() + myReader["TotalSavings"].ToString() + "</span>"
                             });
                         }
                         connection.Close();
@@ -1131,7 +1144,7 @@ namespace InternalWebSystems.Controllers
                     SqlDataReader myReader = command.ExecuteReader();
                     while (myReader.Read())
                     {
-                        
+
                     }
                     connection.Close();
                 }
